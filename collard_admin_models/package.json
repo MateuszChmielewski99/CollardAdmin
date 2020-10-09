@@ -1,0 +1,18 @@
+{
+  "name": "@m_chmiell/collard_admin_models",
+  "version": "1.0.0",
+  "dependencies": {
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "description": "lib with models",
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [
+    "movie"
+  ],
+  "author": "M.Chmielewski",
+  "license": "ISC"
+}
