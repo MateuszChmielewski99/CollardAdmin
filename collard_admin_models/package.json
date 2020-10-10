@@ -1,18 +1,31 @@
 {
   "name": "@m_chmiell/collard_admin_models",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsdx build --format cjs"
   },
   "description": "lib with models",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "tsdx": "^0.14.0"
+  },
   "keywords": [
     "movie"
   ],
   "author": "M.Chmielewski",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MateuszChmielewski99/CollardAdmin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MateuszChmielewski99/CollardAdmin/issues"
+  },
+  "homepage": "https://github.com/MateuszChmielewski99/CollardAdmin#readme"
 }

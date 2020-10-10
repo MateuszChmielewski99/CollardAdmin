@@ -1,0 +1,9 @@
+.Active {
+    color: #5261db;
+}
+
+.Inactive{
+    color: #3F51B5;
+    pointer-events: none;
+}
+
