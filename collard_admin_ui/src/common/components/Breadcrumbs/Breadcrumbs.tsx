@@ -14,7 +14,7 @@ export const BreadcrumbsContainer = () => {
     }
 
     const breadcrumbsStyle = {
-        fontSize: 25, color: "white", paddingBottom: 10, letterSpacing: 2
+        fontSize: 25, paddingBottom: 10, letterSpacing: 2
     }
 
     return (

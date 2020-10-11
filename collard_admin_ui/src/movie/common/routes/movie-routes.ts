@@ -8,22 +8,24 @@ export enum MovieRoutPaths {
     All = "/movie"
 }
 
-export const MovieRoutes:RouteItem[] = [
+export const MovieRoutes: RouteItem[] = [
     {
-        key:"movie-add-section",
-        component:MovieAdd,
-        path:MovieRoutPaths.Add,
-        name:'Add new'
+        key: 'movie-view-all-section',
+        path: MovieRoutPaths.All,
+        component: MovieListing,
+        name: 'View all',
+        exact:true,
     },
     {
-        key:'movie-view-all-section',
-        path:MovieRoutPaths.All,
-        component:MovieListing,
-        name:'View all'
+        key: "movie-add-section",
+        component: MovieAdd,
+        path: MovieRoutPaths.Add,
+        name: 'Add new',
+        exact:true,
     }
 ];
 
-export const movieSection:RouteSection = {
-    items:MovieRoutes,
-    sectionName:'Movie'
+export const movieSection: RouteSection = {
+    items: MovieRoutes,
+    sectionName: 'Movie'
 }
