@@ -3,8 +3,9 @@ import {useLocation} from 'react-router-dom'
 import {Breadcrumbs} from "@material-ui/core";
 import "./breadcrumbs.css"
 import {NavLink} from "../NavLink/NavLink";
+import {BreadcrumbsProps} from "./Breadcrumbs.props";
 
-export const BreadcrumbsContainer = () => {
+const BreadcrumbsContainer = (props:BreadcrumbsProps) => {
     const location = useLocation();
     const splitedPath = location.pathname.split('/');
 
@@ -29,3 +30,5 @@ export const BreadcrumbsContainer = () => {
         </Breadcrumbs>
     );
 }
+
+export default BreadcrumbsContainer;

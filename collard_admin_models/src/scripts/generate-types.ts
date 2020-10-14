@@ -1,14 +1,12 @@
-
 const blackList = [
     "common-definitions.schema.json"
 ];
-// @ts-ignore
 
 const compiler = require('json-schema-to-typescript');
 const fs = require('fs');
 const path = require('path');
 
-const pathName = "src/models/schemas";
+const pathName = "src/models/schema-root";
 
 const capitalize = (s: string) => {
     if (typeof s !== 'string') return ''
@@ -32,7 +30,6 @@ const getFiles = async (dirName: string) => {
     await fs.readdir(dirName, async (errors, files) => {
         for (const file of files) {
             if (blackList.some(s => s === file)) continue;
-            console.log(file);
 
             if (path.extname(file) === "") {
                 await getFiles(dirName + '/' + file);

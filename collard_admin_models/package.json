@@ -3,12 +3,29 @@
   "version": "1.0.1",
   "dependencies": {
     "ajv": "^6.12.6",
+    "husky": "^4.3.0",
+    "json-schema-ref-parser": "^9.0.6",
     "json-schema-to-typescript": "^9.1.1",
+    "prettier": "^2.1.2",
     "typescript": "^4.0.3"
   },
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsdx build --format cjs",
-    "schemas": "ts-node ./src/scripts/generate-types.ts"
+    "schemas": "yarn genRoots && ts-node ./src/scripts/generate-types.ts",
+    "genRoots": "ts-node ./src/scripts/generate-parsed-schemas.ts",
+    "prettier-format": "prettier --write 'src/**/*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier-format"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
   },
   "description": "lib with models",
   "main": "dist/index.d.ts",

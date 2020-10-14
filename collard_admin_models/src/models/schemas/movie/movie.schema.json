@@ -6,6 +6,9 @@
   "type": "object",
   "required": ["Name"],
   "properties": {
+    "Id": {
+      "$ref": "../common/common-definitions.schema.json#/definitions/Guid"
+    },
     "Name": {
       "type": "string",
       "minLength": 2,
