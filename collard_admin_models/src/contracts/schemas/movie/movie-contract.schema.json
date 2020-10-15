@@ -1,8 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "schemas/movie",
-    "title": "Movie",
-    "description": "Movie model",
+    "$id": "schemas/contracts/movie",
+    "title": "MovieContract",
+    "description": "Movie contract",
     "type": "object",
     "required": ["Name"],
     "properties": {
@@ -12,7 +12,10 @@
         "Name": {
             "type": "string",
             "minLength": 2,
-            "description": "Name of a movie"
+            "description": "Name of a movie a"
+        },
+        "Year":{
+            "type":"number"
         }
     },
     "additionalProperties": false

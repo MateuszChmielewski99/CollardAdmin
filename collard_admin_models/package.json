@@ -1,8 +1,10 @@
 {
   "name": "@m_chmiell/collard_admin_models",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "dependencies": {
     "ajv": "^6.12.6",
+    "ajv-errors": "^1.0.1",
+    "ajv-pack": "^0.3.1",
     "husky": "^4.3.0",
     "json-schema-ref-parser": "^9.0.6",
     "json-schema-to-typescript": "^9.1.1",
@@ -12,9 +14,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsdx build --format cjs",
-    "schemas": "yarn genRoots && ts-node ./src/scripts/generate-types.ts",
+    "schemas": "yarn genRoots && yarn genTypes",
+    "genTypes": "ts-node ./src/scripts/generate-types.ts",
     "genRoots": "ts-node ./src/scripts/generate-parsed-schemas.ts",
-    "prettier-format": "prettier --write 'src/**/*"
+    "genVal": "ts-node ./src/scripts/generate-validators.ts",
+    "prettier-format": "prettier --write src/**/*"
   },
   "husky": {
     "hooks": {

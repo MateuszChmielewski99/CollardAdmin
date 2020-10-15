@@ -7,7 +7,7 @@
     "required": ["Name"],
     "properties": {
         "Id": {
-            "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
+            "$ref": "../../../../common/common-definitions.schema.json#/definitions/Guid"
         },
         "Name": {
             "type": "string",

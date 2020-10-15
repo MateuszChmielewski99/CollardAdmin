@@ -1,47 +1,37 @@
-const blackList = [
-    "common-definitions.schema.json"
-];
+const compiler = require('json-schema-to-typescript')
+const fileSys = require('fs')
+const modlesPathName = 'src/models'
+const genTypes = require('./process-schemas')
 
-const compiler = require('json-schema-to-typescript');
-const fs = require('fs');
-const path = require('path');
+const index = process.argv.indexOf('-p')
+const pathNaame = index !== -1 ? process.argv[index + 1] : modlesPathName;
 
-const pathName = "src/models/schema-root";
+console.log(pathNaame)
 
 const capitalize = (s: string) => {
     if (typeof s !== 'string') return ''
     return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-const compileJsonSchema = (fileName: string, distDir: string) => {
-    const splitedFileName = fileName.replace('.schema.json', '').split('-');
-    const modelFileName = splitedFileName.map(s => capitalize(s)).join('');
+const compileJsonSchema = async (fileName: string, distDir: string) => {
+    const splitedFileName = fileName.replace('.schema.json', '').split('-')
+    const modelFileName = splitedFileName.map((s) => capitalize(s)).join('')
 
-    try{
-    compiler.compileFromFile(`${distDir}/${fileName}`)
-        .then(ts => fs.writeFileSync(`src/models/types/generated/${modelFileName}.ts`, ts))
-    }catch (e){
+    try {
+        compiler
+            .compileFromFile(`${distDir}/${fileName}`)
+            .then((ts) =>{
+            console.log(ts)
+                fileSys.writeFileSync(
+                    `${pathNaame}/types/generated/${modelFileName}.ts`,
+                    ts
+                )}
+            )
+    } catch (e) {
         console.error('error while compiling')
     }
 }
 
-
-const getFiles = async (dirName: string) => {
-    await fs.readdir(dirName, async (errors, files) => {
-        for (const file of files) {
-            if (blackList.some(s => s === file)) continue;
-
-            if (path.extname(file) === "") {
-                await getFiles(dirName + '/' + file);
-            }
-            if (path.extname(file) === ".json") {
-                 await compileJsonSchema(file, dirName);
-            }
-        }
-
-    })
-}
-
 (async () => {
-    await (getFiles(pathName));
-})();
+    await genTypes(pathNaame + '/schema-root', compileJsonSchema)
+})()

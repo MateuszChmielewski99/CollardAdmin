@@ -1,0 +1,1 @@
+import  {MovieContract} from './generated/MovieContract'
