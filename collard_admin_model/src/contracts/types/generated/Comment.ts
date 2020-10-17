@@ -9,11 +9,11 @@
  * Comment
  */
 export interface CommentContract {
-    /**
-     * Unique identifier of comment as a GUID
-     */
-    id: string
-    Content: string
-    MovieId: string
-    UserId: string
+  /**
+   * Unique identifier of comment as a GUID
+   */
+  id: string;
+  Content: string;
+  MovieId: string;
+  UserId: string;
 }

@@ -1,29 +1,35 @@
 import React from "react";
-import './button.css'
+import "./button.css";
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
-    variant?:ButtonTypes;
+  variant?: ButtonTypes;
 };
 
 enum ButtonTypes {
-    Primary,
-    Default,
-    Warning,
+  Primary,
+  Default,
+  Warning,
 }
 
-export const Button = (props:ButtonProps) => {
-
-    const getClassName = (type:ButtonTypes) => {
-        switch (type){
-            case ButtonTypes.Primary:
-                return 'ButtonPrimary';
-
-        }
+export const Button = (props: ButtonProps) => {
+  const getClassName = (type: ButtonTypes) => {
+    switch (type) {
+      case ButtonTypes.Primary:
+        return "ButtonPrimary";
     }
-
-    return <button className={getClassName(props.variant || ButtonTypes.Primary)}> {props.children} </button>
-}
+  };
+  const { variant, children, type, ...restProps } = props;
+  return (
+    <button
+      className={getClassName(props.variant || ButtonTypes.Primary)}
+      {...restProps}
+    >
+      {" "}
+      {props.children}{" "}
+    </button>
+  );
+};
 
 Button.defaultProperties = {
-    variant:ButtonTypes.Primary
-}
+  variant: ButtonTypes.Primary,
+};

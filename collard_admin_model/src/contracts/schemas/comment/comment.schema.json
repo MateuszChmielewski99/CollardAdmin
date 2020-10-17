@@ -1,24 +1,24 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "schemas/comment",
-    "title": "CommentContract",
-    "description": "Comment",
-    "type": "object",
-    "required": ["id", "Content", "MovieId", "UserId"],
-    "properties": {
-        "id": {
-            "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid",
-            "description": "Unique identifier of comment as a GUID"
-        },
-        "Content": {
-            "type": "string"
-        },
-        "MovieId": {
-            "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
-        },
-        "UserId": {
-            "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/comment",
+  "title": "CommentContract",
+  "description": "Comment",
+  "type": "object",
+  "required": ["id", "Content", "MovieId", "UserId"],
+  "properties": {
+    "id": {
+      "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid",
+      "description": "Unique identifier of comment as a GUID"
     },
-    "additionalProperties": false
+    "Content": {
+      "type": "string"
+    },
+    "MovieId": {
+      "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
+    },
+    "UserId": {
+      "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
+    }
+  },
+  "additionalProperties": false
 }

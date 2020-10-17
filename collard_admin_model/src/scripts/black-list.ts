@@ -1,3 +1,3 @@
-const blackList = ['base-entity.schema.json']
+const blackList = ['base-entity.schema.json'];
 
-module.exports = blackList
+module.exports = blackList;

@@ -9,6 +9,6 @@
  * Movie model
  */
 export interface ListingRequest {
-    PageSize: number
-    PageNumber: number
+  PageSize: number;
+  PageNumber: number;
 }

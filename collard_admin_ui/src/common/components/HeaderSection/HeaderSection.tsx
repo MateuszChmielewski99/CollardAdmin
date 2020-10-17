@@ -15,8 +15,8 @@ export const HeaderSection = (props: HeaderSectionProps) => {
             {props.title}
             <Stack flex={1}>
             </Stack>
-            {ctaItemsList.map(item => (
-                    <Stack alignSelf={'flex-end'} className={'HeaderSectionCtaItems'}>
+            {ctaItemsList.map((item) => (
+                    <Stack key={item.key} alignSelf={'flex-end'} className={'HeaderSectionCtaItems'}>
                         {item}
                     </Stack>
                 ))}

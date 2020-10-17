@@ -9,6 +9,6 @@
  * Reference to Entity
  */
 export interface EntityReference {
-    Id: string
-    Name: string
+  Id: string;
+  Name: string;
 }

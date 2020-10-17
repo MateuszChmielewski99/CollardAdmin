@@ -1,2 +1,2 @@
-export { MovieContract } from './generated/MovieContract'
-export { CommentContract } from './generated/Comment'
+export { MovieContract } from './generated/MovieContract';
+export { CommentContract } from './generated/Comment';

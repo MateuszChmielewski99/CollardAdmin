@@ -9,17 +9,17 @@
  * Person
  */
 export type Person = {
-    Name: string
-    LastName: string
-} & BaseDocument
+  Name: string;
+  LastName: string;
+} & BaseDocument;
 
 /**
  * Base properties of all documents in db
  */
 export interface BaseDocument {
-    /**
-     * timestamp of creation
-     */
-    _ts: number
-    id?: string
+  /**
+   * timestamp of creation
+   */
+  _ts: number;
+  id?: string;
 }

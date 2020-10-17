@@ -9,8 +9,6 @@ const BreadcrumbsContainer = (props: BreadcrumbsProps) => {
     const location = useLocation();
     const splitedPath = location.pathname.split('/');
 
-    console.log(splitedPath);
-
     const capitalizeFirstLetter = (s: string) => {
         if (typeof s !== 'string') return ''
         return s.charAt(0).toUpperCase() + s.slice(1)

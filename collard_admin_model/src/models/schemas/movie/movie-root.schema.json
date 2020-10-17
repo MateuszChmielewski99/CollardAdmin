@@ -1,16 +1,16 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "schemas/movie",
-    "title": "Movie",
-    "description": "Movie model",
-    "type": "object",
-    "allOf": [
-        {
-            "$ref": "./movie.schema.json"
-        },
-        {
-            "$ref": "../common/base-entity.schema.json"
-        }
-    ],
-    "additionalProperties": false
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/movie",
+  "title": "Movie",
+  "description": "Movie model",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "./movie.schema.json"
+    },
+    {
+      "$ref": "../common/base-entity.schema.json"
+    }
+  ],
+  "additionalProperties": false
 }

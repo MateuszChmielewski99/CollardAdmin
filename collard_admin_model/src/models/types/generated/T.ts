@@ -9,9 +9,9 @@
  * Movie model
  */
 export interface Movie {
-    Id?: string
-    /**
-     * Name of a movie
-     */
-    Name: string
+  Id?: string;
+  /**
+   * Name of a movie
+   */
+  Name: string;
 }

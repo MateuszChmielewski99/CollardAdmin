@@ -8,6 +8,7 @@ type StackProps = {
     className?:string;
     flex?:string | number;
     alignSelf?:string;
+    role?:string
 }
 
 export const Stack = (props:StackProps) => {
@@ -19,7 +20,7 @@ export const Stack = (props:StackProps) => {
         flex: props.flex,
         alignSelf:props.alignSelf
     }
-    return <div style={styles} className={props.className}>{props.children}</div>
+    return <div style={styles} className={props.className} role={props.role}>{props.children}</div>
 }
 
 Stack.defaultProperties = {

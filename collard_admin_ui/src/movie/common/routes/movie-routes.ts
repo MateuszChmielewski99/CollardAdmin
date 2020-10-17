@@ -1,7 +1,7 @@
 import {RouteItem} from "../../../common/routing/RouteItem";
-import {MovieAdd} from "../../add/MovieAdd";
 import {MovieListing} from "../../listing/MovieListing";
 import {RouteSection} from "../../../common/routing/RouteSection";
+import MovieAddSection from "../../add";
 
 export enum MovieRoutPaths {
     Add = "/movie/add",
@@ -18,7 +18,7 @@ export const MovieRoutes: RouteItem[] = [
     },
     {
         key: "movie-add-section",
-        component: MovieAdd,
+        component: MovieAddSection,
         path: MovieRoutPaths.Add,
         name: 'Add new',
         exact:true,

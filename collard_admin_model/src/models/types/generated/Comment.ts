@@ -9,18 +9,18 @@
  * Comment
  */
 export type Comment = {
-    Content: string
-    MovieId: string
-    UserId: string
-} & BaseDocument
+  Content: string;
+  MovieId: string;
+  UserId: string;
+} & BaseDocument;
 
 /**
  * Base properties of all documents in db
  */
 export interface BaseDocument {
-    /**
-     * timestamp of creation
-     */
-    _ts: number
-    id?: string
+  /**
+   * timestamp of creation
+   */
+  _ts: number;
+  id?: string;
 }
