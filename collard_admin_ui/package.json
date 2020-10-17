@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@m_chmiell/collard_admin_models": "^1.0.4",
+    "collard_admin_models": "^1.0.8",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -41,7 +41,6 @@
     ]
   },
   "devDependencies": {
-    "@m_chmiell/collard_admin_models": "^1.0.1",
     "@types/react-router-dom": "^5.1.6",
     "@types/react-sticky": "^6.0.3",
     "react-router-dom": "^5.2.0"
