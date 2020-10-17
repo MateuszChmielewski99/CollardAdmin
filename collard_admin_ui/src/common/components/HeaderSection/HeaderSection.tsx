@@ -1,26 +1,29 @@
-import React from "react";
-import {Stack} from "../Stack";
-import './header-section.css'
-
+import React from 'react';
+import { Stack } from '../Stack';
+import './header-section.css';
 
 type HeaderSectionProps = {
-    title: string;
-    ctaItems: JSX.Element | JSX.Element[];
-}
+  title: string;
+  ctaItems: JSX.Element | JSX.Element[];
+};
 
 export const HeaderSection = (props: HeaderSectionProps) => {
-    const ctaItemsList = Array.isArray(props.ctaItems) ? props.ctaItems : [props.ctaItems];
-    return (
-        <Stack horizontal className={"HeaderSection"}>
-            {props.title}
-            <Stack flex={1}>
-            </Stack>
-            {ctaItemsList.map((item) => (
-                    <Stack key={item.key} alignSelf={'flex-end'} className={'HeaderSectionCtaItems'}>
-                        {item}
-                    </Stack>
-                ))}
+  const ctaItemsList = Array.isArray(props.ctaItems)
+    ? props.ctaItems
+    : [props.ctaItems];
+  return (
+    <Stack horizontal className={'HeaderSection'}>
+      {props.title}
+      <Stack flex={1}></Stack>
+      {ctaItemsList.map((item) => (
+        <Stack
+          key={item.key}
+          alignSelf={'flex-end'}
+          className={'HeaderSectionCtaItems'}
+        >
+          {item}
         </Stack>
-    );
-}
-
+      ))}
+    </Stack>
+  );
+};

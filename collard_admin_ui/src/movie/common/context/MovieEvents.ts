@@ -1,61 +1,61 @@
-import { CreateMovieRequest, EntityReference } from "collard_admin_models";
+import { CreateMovieRequest, EntityReference } from 'collard_admin_models';
 
-export type GenresData = Pick<CreateMovieRequest,'Genres'>;
-export type LeadingActorsData = Pick<CreateMovieRequest,'LeadingActors'>;
+export type GenresData = Pick<CreateMovieRequest, 'Genres'>;
+export type LeadingActorsData = Pick<CreateMovieRequest, 'LeadingActors'>;
 
 interface SetNameEvent {
-  type: "SET_NAME";
+  type: 'SET_NAME';
   data: string;
 }
 
 interface SetDirector {
-  type: "SET_DIRECTOR";
+  type: 'SET_DIRECTOR';
   data: EntityReference;
 }
 
 interface SetGenres {
-  type: "SET_GENRES";
+  type: 'SET_GENRES';
   data: GenresData;
 }
 
 interface SetImdbLink {
-  type: "SET_IMDB_LINK";
+  type: 'SET_IMDB_LINK';
   data: string;
 }
 
 interface SetImdbScore {
-  type: "SET_IMDB_SCORE";
+  type: 'SET_IMDB_SCORE';
   data: number;
 }
 
 interface SetLeadingActors {
-  type: "SET_LEADING_ACTORS";
-  data:LeadingActorsData;
+  type: 'SET_LEADING_ACTORS';
+  data: LeadingActorsData;
 }
 
 interface SetYear {
-  type: "SET_YEAR";
+  type: 'SET_YEAR';
   data: number;
 }
 
 interface SetOriginalCountr {
-  type: "SET_ORIGINAL_COUNTRY";
+  type: 'SET_ORIGINAL_COUNTRY';
   data: EntityReference[] | undefined;
 }
 
 interface SetOriginalLanguage {
-  type: "SET_ORIGINAL_LANGUAGE";
+  type: 'SET_ORIGINAL_LANGUAGE';
   data: EntityReference[] | undefined;
 }
 
 interface SetIsValid {
-    type:'SET_IS_VALID',
-    isValid:boolean
+  type: 'SET_IS_VALID';
+  isValid: boolean;
 }
 
 interface SetImagesUrls {
-    type:'SET_IMAGES_URLS',
-    data:string[]
+  type: 'SET_IMAGES_URLS';
+  data: string[];
 }
 
 export type MovieEvents =

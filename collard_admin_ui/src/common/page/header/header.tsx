@@ -4,11 +4,10 @@ import {
   makeStyles,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import React, { useState } from "react";
-import { AppMenu } from "../menu/menu";
-
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState } from 'react';
+import { AppMenu } from '../menu/menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +33,9 @@ export const AppHeader = () => {
           className={classes.menuButton}
           color="inherit"
           aria-label="menu"
-          onClick={() => {setIsMenuOpen(true)}}
+          onClick={() => {
+            setIsMenuOpen(true);
+          }}
         >
           <MenuIcon />
         </IconButton>
@@ -42,7 +43,12 @@ export const AppHeader = () => {
           Collard Admin
         </Typography>
       </Toolbar>
-      <AppMenu isOpen={isMenuOpen} onClose={() => { setIsMenuOpen(false)}}/>
+      <AppMenu
+        isOpen={isMenuOpen}
+        onClose={() => {
+          setIsMenuOpen(false);
+        }}
+      />
     </AppBar>
   );
 };

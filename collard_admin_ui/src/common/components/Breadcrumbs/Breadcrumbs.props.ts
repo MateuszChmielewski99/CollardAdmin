@@ -1,3 +1,3 @@
 export type BreadcrumbsProps = {
-    names?:string[]
-}
+  names?: string[];
+};

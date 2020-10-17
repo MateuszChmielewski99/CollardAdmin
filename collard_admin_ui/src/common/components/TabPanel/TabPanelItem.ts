@@ -1,4 +1,4 @@
 export type TabPanelItem = {
-    key:string,
-    sectionName:string,
-}
+  key: string;
+  sectionName: string;
+};

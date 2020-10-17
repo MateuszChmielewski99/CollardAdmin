@@ -1,6 +1,6 @@
-import {RouteItem} from "./RouteItem";
+import { RouteItem } from './RouteItem';
 
 export type RouteSection = {
-    items:RouteItem[];
-    sectionName:string;
-}
+  items: RouteItem[];
+  sectionName: string;
+};

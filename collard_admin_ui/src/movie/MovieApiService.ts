@@ -1,4 +1,4 @@
-import { validateCreateMovieRequest } from "collard_admin_models";
+import { validateCreateMovieRequest } from 'collard_admin_models';
 
 export class MovieApiService {
   save(movie: any) {

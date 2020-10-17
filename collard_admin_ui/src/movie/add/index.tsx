@@ -1,11 +1,13 @@
-import React from "react";
-import { MovieProvider } from "../common/context/MovieState";
-import MovieAdd from "./MovieAdd";
+import React from 'react';
+import { MovieProvider } from '../common/context/MovieState';
+import MovieAdd from './MovieAdd';
 
 const MovieAddSection = () => {
-  return <MovieProvider>
+  return (
+    <MovieProvider>
       <MovieAdd />
-  </MovieProvider>;
+    </MovieProvider>
+  );
 };
 
 export default MovieAddSection;

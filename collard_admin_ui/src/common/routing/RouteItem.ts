@@ -1,9 +1,9 @@
-import {FunctionComponent} from "react";
+import { FunctionComponent } from 'react';
 
 export type RouteItem = {
-    key:string;
-    path:string,
-    component:FunctionComponent,
-    name:string;
-    exact?:boolean
-}
+  key: string;
+  path: string;
+  component: FunctionComponent;
+  name: string;
+  exact?: boolean;
+};

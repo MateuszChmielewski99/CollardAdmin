@@ -1,5 +1,5 @@
-import React from "react";
-import "./button.css";
+import React from 'react';
+import './button.css';
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
   variant?: ButtonTypes;
@@ -15,7 +15,7 @@ export const Button = (props: ButtonProps) => {
   const getClassName = (type: ButtonTypes) => {
     switch (type) {
       case ButtonTypes.Primary:
-        return "ButtonPrimary";
+        return 'ButtonPrimary';
     }
   };
   const { variant, children, type, ...restProps } = props;
@@ -24,8 +24,8 @@ export const Button = (props: ButtonProps) => {
       className={getClassName(props.variant || ButtonTypes.Primary)}
       {...restProps}
     >
-      {" "}
-      {props.children}{" "}
+      {' '}
+      {props.children}{' '}
     </button>
   );
 };
