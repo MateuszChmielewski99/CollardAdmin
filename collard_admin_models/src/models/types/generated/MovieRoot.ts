@@ -8,6 +8,11 @@
 /**
  * Movie model
  */
+export type Movie = MovieBaseModel & BaseDocument;
+
+/**
+ * Movie model
+ */
 export interface MovieBaseModel {
   /**
    * Name of a movie
@@ -115,4 +120,14 @@ export interface MovieBaseModel {
     Name: string;
   };
   ImagesUrls?: string[];
+}
+/**
+ * Base properties of all documents in db
+ */
+export interface BaseDocument {
+  /**
+   * timestamp of creation
+   */
+  _ts: number;
+  id?: string;
 }

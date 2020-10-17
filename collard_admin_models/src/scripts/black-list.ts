@@ -1,3 +1,3 @@
-const blackList = ['common-definitions.schema.json']
+const blackList = ['base-entity.schema.json']
 
 module.exports = blackList;

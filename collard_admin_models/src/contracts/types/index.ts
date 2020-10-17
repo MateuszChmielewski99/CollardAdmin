@@ -1,1 +1,2 @@
-import  {MovieContract} from './generated/MovieContract'
+export  {MovieContract} from './generated/MovieContract'
+export { CommentContract } from './generated/Comment';

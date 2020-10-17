@@ -6,13 +6,9 @@
  */
 
 /**
- * Movie model
+ * Request that is send to create new movie
  */
-export interface MovieBaseModel {
-  /**
-   * Name of a movie
-   */
-  Name: string;
+export interface UpdateMovieRequest {
   /**
    * Year of production
    */

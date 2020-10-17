@@ -6,9 +6,9 @@
  */
 
 /**
- * Movie model
+ * Request that is send to create new movie
  */
-export interface MovieBaseModel {
+export interface CreateMovieRequest {
   /**
    * Name of a movie
    */

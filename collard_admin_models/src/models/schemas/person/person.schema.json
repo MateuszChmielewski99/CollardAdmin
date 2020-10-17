@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "schemas/person",
+    "title": "Person",
+    "description": "Person",
+    "allOf": [{
+        "type": "object",
+        "required": ["Name", "LastName"],
+        "properties": {
+            "Name": {
+                "type": "string"
+            },
+            "LastName": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false
+    }, {
+        "$ref": "../common/base-entity.schema.json"
+    }],
+    "additionalProperties": false
+}

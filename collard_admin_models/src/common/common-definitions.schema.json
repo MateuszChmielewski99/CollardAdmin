@@ -8,6 +8,19 @@
         "Guid": {
             "type": "string",
             "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+        },
+        "EntityReference": {
+            "type": "object",
+            "required": ["Id", "Name"],
+            "properties": {
+                "Id": {
+                    "$ref": "#/definitions/Guid"
+                },
+                "Name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
         }
     }
 }
