@@ -7,11 +7,11 @@ const getFiles = async (
   dirName: string,
   callback: (file: string, dir: string) => Promise<void>
 ) => {
-  await fileSyst.readdir(dirName, async (errors, files) => {
+  await fileSyst.readdir(dirName, async (errors:any, files:string[]) => {
     if (errors) console.error(errors);
 
     for (const file of files) {
-      if (bl.some((s) => s === file)) continue;
+      if (bl.some((s:string) => s === file)) continue;
 
       if (path.extname(file) === '') {
         await getFiles(dirName + '/' + file, callback);

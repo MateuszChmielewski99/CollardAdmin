@@ -6,6 +6,14 @@
  */
 
 /**
+ * Movie search response
+ */
+export interface MovieSearchResponse {
+  Movies: MovieContract[];
+  Count: number;
+  [k: string]: unknown;
+}
+/**
  * Movie contract
  */
 export interface MovieContract {

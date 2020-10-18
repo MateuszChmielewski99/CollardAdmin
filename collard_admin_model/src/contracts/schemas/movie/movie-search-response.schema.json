@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "schemas/movie",
+    "title": "MovieSearchResponse",
+    "description": "Movie search response",
+    "type": "object",
+    "required": ["Movies","Count"],
+    "properties": {
+        "Movies":{
+            "type":"array",
+            "items": {
+                "$ref":"./movie-contract.schema.json"
+            }
+        },
+        "Count":{
+            "type":"number"
+        }
+    }
+}

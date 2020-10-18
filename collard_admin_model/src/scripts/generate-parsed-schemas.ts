@@ -4,19 +4,19 @@ const pathName = 'src/models';
 const dereferenceSchemas = require('./process-schemas');
 
 const createDir = (dirName: string) => {
-  fs.mkdirSync(dirName, { recursive: true }, (err) => {
+  fs.mkdirSync(dirName, { recursive: true }, (err:any) => {
     if (err) console.log(err);
   });
 };
 
-const writeToFile = async (path, schema: string) => {
-  await fs.writeFile(path, schema, (err) => {
+const writeToFile = async (path:string, schema: string) => {
+  await fs.writeFile(path, schema, (err:any) => {
     if (err) console.log(err);
     else console.log(`saved root schema`);
   });
 };
 
-const dereference = async (file: string, dirName) => {
+const dereference = async (file: string, dirName:string) => {
   try {
     let schema = await parser.dereference(`${dirName}/${file}`);
 

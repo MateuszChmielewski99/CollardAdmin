@@ -18,8 +18,7 @@ const compileJsonSchema = async (fileName: string, distDir: string) => {
   const modelFileName = splitedFileName.map((s) => capitalize(s)).join('');
 
   try {
-    compiler.compileFromFile(`${distDir}/${fileName}`).then((ts) => {
-      console.log(ts);
+    compiler.compileFromFile(`${distDir}/${fileName}`).then((ts:any) => {
       fileSys.writeFileSync(
         `${pathNaame}/types/generated/${modelFileName}.ts`,
         ts
