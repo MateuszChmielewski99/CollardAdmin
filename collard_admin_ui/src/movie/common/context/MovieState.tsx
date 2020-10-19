@@ -2,10 +2,12 @@ import { CreateMovieRequest, EntityReference } from 'collard_admin_models';
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 import { movieReducer } from './MovieReducre';
 import { LeadingActorsData, GenresData } from './MovieEvents';
+import MovieErrors from '../types/MovieErrors';
 
 export type MovieState = {
   data: CreateMovieRequest;
   isValid: boolean;
+  validity:MovieErrors;
 };
 
 const emptyEntityRef: EntityReference = {
@@ -26,6 +28,18 @@ const init: MovieState = {
     OriginalCountry: undefined,
     OriginalLanguage: undefined,
   },
+  validity:{
+    Director:'',
+    Genres:'',
+    ImagesUrls:'',
+    ImdbLink:'',
+    ImdbScore:'',
+    LeadingActors:'',
+    Name:'',
+    OriginalCountry:'',
+    OriginalLanguage:'',
+    Year:''
+  },
   isValid: false,
 };
 
@@ -41,6 +55,7 @@ const MovieContext = createContext<{
   setName: (name: string) => void;
   setDirector: (director: EntityReference) => void;
   setIsVald: (isValid: boolean) => void;
+  setFieldErrorMessage:(fieldName:keyof CreateMovieRequest, errorMessage:string) => void;
   state: MovieState;
 } | null>(null);
 
@@ -57,6 +72,13 @@ export const useMovieContext = () => {
 export const MovieProvider = ({ children }: { children: ReactNode }) => {
   const [state, send] = useReducer(movieReducer, init);
 
+  const setFieldErrorMessage = (fieldName:keyof CreateMovieRequest, errorMessage:string) => {
+    send({
+      type:'SET_FIELD_ERROR_MESSAGE',
+      errorMessage:errorMessage,
+      fieldName:fieldName
+    })
+  }
   const setImagesUrls = (urls: string[]) => {
     send({
       type: 'SET_IMAGES_URLS',
@@ -137,6 +159,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
   return (
     <MovieContext.Provider
       value={{
+        setFieldErrorMessage,
         setDirector,
         setGenres,
         setImagesUrls,

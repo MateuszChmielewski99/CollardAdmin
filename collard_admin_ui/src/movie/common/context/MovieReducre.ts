@@ -41,6 +41,9 @@ const movieProducer = produce((draft: MovieState, event: MovieEvents) => {
     case 'SET_YEAR':
       draft.data.Year = event.data;
       break;
+    case "SET_FIELD_ERROR_MESSAGE":
+      draft.validity[event.fieldName] = event.errorMessage;
+      break;
     default:
       throw new Error('Invalid event type');
   }

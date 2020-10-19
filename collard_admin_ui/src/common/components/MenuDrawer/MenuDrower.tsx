@@ -25,8 +25,8 @@ export const MenuDrower = (props: MenuDrowerProps) => {
       </div>
       <div className={'MenuDrowerItem'}>
         {isOpen &&
-          props.sectionItems.map((item) => (
-            <div className={'MenuDrowerFlexContainer'}>
+          props.sectionItems.map((item, index) => (
+            <div className={'MenuDrowerFlexContainer'} key={`menu-drower-${index}`}>
               <ArrowRightIcon className={'MenuDrowrIcon'} />
               <div>{item}</div>
             </div>

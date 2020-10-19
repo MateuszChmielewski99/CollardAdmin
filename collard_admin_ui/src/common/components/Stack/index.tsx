@@ -9,6 +9,7 @@ type StackProps = {
   flex?: string | number;
   alignSelf?: string;
   role?: string;
+  flexWrap?:"-moz-initial" | "inherit" | "initial" | "revert" | "unset" | "nowrap" | "wrap" | "wrap-reverse" | undefined;
 };
 
 export const Stack = (props: StackProps) => {
@@ -19,6 +20,7 @@ export const Stack = (props: StackProps) => {
     justifyContent: props.justifyContent,
     flex: props.flex,
     alignSelf: props.alignSelf,
+    flexWrap:props.flexWrap || 'nowrap'
   };
   return (
     <div style={styles} className={props.className} role={props.role}>

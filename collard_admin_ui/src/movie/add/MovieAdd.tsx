@@ -10,14 +10,23 @@ import MovieAddTabs from './common/MovieAddTabs';
 import MovieAddInfo from './info/MovieAddInfo';
 import MovieAddPhotos from './photo/MoviePhotos';
 import './movie-add.css';
+import { validateCreateMovieRequest } from 'collard_admin_models';
+import { createErrorMessage } from '../../common/helpers/errorMessage.factory';
 
 const MovieAdd = () => {
   const movieApiService = new MovieApiService();
   const movieContext = useMovieContext();
+
+  const handleSaveMovie = () => {
+    validateCreateMovieRequest(movieContext.state.data);
+    console.log(validateCreateMovieRequest.errors);
+    validateCreateMovieRequest.errors?.map((e) => createErrorMessage(e)).forEach(s => console.log(s));
+  };
+
   const ctaItems = (
     <Button
       data-automation-id={'save-button'}
-      disabled={!movieContext.state.isValid}
+      onClick={handleSaveMovie}
     >
       {' '}
       Save{' '}

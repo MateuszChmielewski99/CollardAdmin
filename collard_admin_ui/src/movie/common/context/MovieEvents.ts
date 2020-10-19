@@ -58,6 +58,12 @@ interface SetImagesUrls {
   data: string[];
 }
 
+interface SetFieldErrorMessage {
+  type:'SET_FIELD_ERROR_MESSAGE';
+  fieldName:keyof CreateMovieRequest;
+  errorMessage:string;
+}
+
 export type MovieEvents =
   | SetNameEvent
   | SetDirector
@@ -69,4 +75,5 @@ export type MovieEvents =
   | SetImdbScore
   | SetImdbLink
   | SetIsValid
-  | SetImagesUrls;
+  | SetImagesUrls
+  | SetFieldErrorMessage;

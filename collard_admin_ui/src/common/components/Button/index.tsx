@@ -24,8 +24,7 @@ export const Button = (props: ButtonProps) => {
       className={getClassName(props.variant || ButtonTypes.Primary)}
       {...restProps}
     >
-      {' '}
-      {props.children}{' '}
+      {props.children}
     </button>
   );
 };
