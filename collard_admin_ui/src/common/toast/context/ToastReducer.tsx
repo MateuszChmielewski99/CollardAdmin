@@ -9,10 +9,10 @@ export const toastReducer = produce((draft: ToastState, event: ToastEvent) => {
       draft.message = event.message;
       draft.isOpen = true;
       break;
-      case 'CLOSE':
-          draft.isOpen = false;
-          break;
+    case 'CLOSE':
+      draft.isOpen = false;
+      break;
     default:
-        throw new Error('Invalid event type')
+      throw new Error('Invalid event type');
   }
 });

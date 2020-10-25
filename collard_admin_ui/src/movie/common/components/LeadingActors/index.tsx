@@ -70,8 +70,10 @@ const LeadingActors = (props: LeadingActorsProps) => {
           }
           onInputChange={search}
           inputProps={{
-            value:inputValue,
-            onChange:(e:any) => {setInputValue(e.target.value)},
+            value: inputValue,
+            onChange: (e: any) => {
+              setInputValue(e.target.value);
+            },
             error: props.errorMessage !== '',
             helperText: props.errorMessage,
           }}

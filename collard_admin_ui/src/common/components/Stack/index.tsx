@@ -9,7 +9,7 @@ type StackProps = {
   flex?: string | number;
   alignSelf?: string;
   role?: string;
-  style?:React.CSSProperties
+  style?: React.CSSProperties;
   flexWrap?:
     | '-moz-initial'
     | 'inherit'
@@ -22,7 +22,7 @@ type StackProps = {
     | undefined;
 };
 
-export const Stack = (props: StackProps) => {  
+export const Stack = (props: StackProps) => {
   const styles: CSSProperties = {
     ...props.style,
     display: 'flex',
@@ -33,7 +33,6 @@ export const Stack = (props: StackProps) => {
     alignSelf: props.alignSelf,
     flexWrap: props.flexWrap || 'nowrap',
   };
-
 
   return (
     <div style={styles} className={props.className} role={props.role}>

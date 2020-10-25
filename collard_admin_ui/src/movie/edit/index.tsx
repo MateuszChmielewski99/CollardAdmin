@@ -7,7 +7,7 @@ const MovieEditSection = () => {
   const params = useParams() as any;
   return (
     <MovieProvider>
-      <MovieEdit movieId={params.movieId}/>
+      <MovieEdit movieId={params.movieId} />
     </MovieProvider>
   );
 };

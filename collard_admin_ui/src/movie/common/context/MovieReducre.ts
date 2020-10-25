@@ -8,11 +8,10 @@ export const movieReducer = (draft: MovieState, event: MovieEvents) => {
   return movieProducer(draft, event);
 };
 
-const getMovieData = (eventData:MovieContract) => {
-  const {id, ...rest} = eventData;
+const getMovieData = (eventData: MovieContract) => {
+  const { id, ...rest } = eventData;
   return rest;
-}
-
+};
 
 const movieProducer = produce((draft: MovieState, event: MovieEvents) => {
   switch (event.type) {

@@ -1,9 +1,12 @@
-import { CreateMovieRequest, EntityReference, MovieContract } from 'collard_admin_models';
+import {
+  CreateMovieRequest,
+  EntityReference,
+  MovieContract,
+} from 'collard_admin_models';
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 import { movieReducer } from './MovieReducre';
 import { LeadingActorsData, GenresData } from './MovieEvents';
 import MovieErrors from '../types/MovieErrors';
-
 
 export type MovieState = {
   data: CreateMovieRequest;
@@ -56,7 +59,7 @@ const MovieContext = createContext<{
   setName: (name: string) => void;
   setDirector: (director: EntityReference) => void;
   setIsVald: (isValid: boolean) => void;
-  setData:(data:MovieContract) => void;
+  setData: (data: MovieContract) => void;
   setFieldErrorMessage: (
     fieldName: keyof CreateMovieRequest,
     errorMessage: string
@@ -77,12 +80,12 @@ export const useMovieContext = () => {
 export const MovieProvider = ({ children }: { children: ReactNode }) => {
   const [state, send] = useReducer(movieReducer, init);
 
-  const setData = (data:MovieContract) => {
+  const setData = (data: MovieContract) => {
     send({
-      type:'SET_DATA',
-      data
-    })
-  }
+      type: 'SET_DATA',
+      data,
+    });
+  };
 
   const setFieldErrorMessage = (
     fieldName: keyof CreateMovieRequest,

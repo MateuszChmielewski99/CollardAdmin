@@ -111,7 +111,10 @@ export const MovieListing = () => {
       <HeaderSection title={'Add new movie'} ctaItems={ctaItems} />
       <BreadcrumbsContainer />
       <MainSection>
-        <Stack style={{ height: '90%', padding: '20px 0' }} justifyContent={isLoading ? 'center' : ''}>
+        <Stack
+          style={{ height: '90%', padding: '20px 0' }}
+          justifyContent={isLoading ? 'center' : ''}
+        >
           {!isLoading ? (
             <BootstrapTable
               data={data}

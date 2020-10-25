@@ -13,7 +13,7 @@ export class MovieApiService {
     return Promise.resolve();
   }
 
-  getById(id: string):Promise<MovieContract> {
+  getById(id: string): Promise<MovieContract> {
     const data: MovieContract = {
       Director: {
         Id: 'a3f0f15e-1627-11eb-adc1-0242ac120002',

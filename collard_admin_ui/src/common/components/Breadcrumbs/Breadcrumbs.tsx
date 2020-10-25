@@ -7,19 +7,21 @@ import { BreadcrumbsProps } from './Breadcrumbs.props';
 
 const BreadcrumbsContainer = (props: BreadcrumbsProps) => {
   let path = useLocation().pathname;
-  
+
   useEffect(() => {
-    console.log(props.names)
-  },[props.names?.length])
+    console.log(props.names);
+  }, [props.names?.length]);
 
-  console.log(props.names)
-
+  console.log(props.names);
 
   let splitedPath = path.split('/');
-  splitedPath = splitedPath.map(item =>  {
-    return item.replace(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/gm, 'Edit')
+  splitedPath = splitedPath.map((item) => {
+    return item.replace(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/gm,
+      'Edit'
+    );
   });
-  
+
   const capitalizeFirstLetter = (s: string) => {
     if (typeof s !== 'string') return '';
     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -37,9 +39,11 @@ const BreadcrumbsContainer = (props: BreadcrumbsProps) => {
       separator={'>'}
     >
       {splitedPath.map((item, index) => (
-       <NavLink
+        <NavLink
           to={`/${item}`}
-          text={item === '' && index === 0 ? 'Home' : capitalizeFirstLetter(item)}
+          text={
+            item === '' && index === 0 ? 'Home' : capitalizeFirstLetter(item)
+          }
           key={item}
           className={index === splitedPath.length - 1 ? 'Inactive' : 'Active'}
           disabled={index === splitedPath.length - 1}

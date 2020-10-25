@@ -8,7 +8,7 @@ import { ToastProvider } from './common/toast/context/ToastState';
 ReactDOM.render(
   <React.StrictMode>
     <ToastProvider>
-    <App />
+      <App />
     </ToastProvider>
   </React.StrictMode>,
   document.getElementById('root')

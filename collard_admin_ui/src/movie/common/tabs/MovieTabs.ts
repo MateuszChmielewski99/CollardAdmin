@@ -11,7 +11,6 @@ const MovieAddTabs: TabPanelItem[] = [
   },
 ];
 
-
 export const MovieEditTabs: TabPanelItem[] = [
   {
     key: 'movie-edit-info',

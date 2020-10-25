@@ -31,15 +31,23 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
   const years = getYearOptions();
   const movieContext = useMovieContext();
   const [title, setTitle] = useState(movieContext.state.data.Name);
-  const [year, setYear] = useState<number | undefined>(movieContext.state.data.Year || undefined);
-  const [imdbScore, setImdbScore] = useState<number | undefined>(movieContext.state.data.ImdbScore || undefined);
+  const [year, setYear] = useState<number | undefined>(
+    movieContext.state.data.Year || undefined
+  );
+  const [imdbScore, setImdbScore] = useState<number | undefined>(
+    movieContext.state.data.ImdbScore || undefined
+  );
   const [imdbLink, setImdbLink] = useState(movieContext.state.data.ImdbLink);
- 
-  const getGenresInitialData = () => {
-    return movieContext.state.data.Genres.length ? movieContext.state.data.Genres as any as GenresData : undefined; 
-  }
 
-  const [genres, setGenres] = useState<GenresData | undefined>(getGenresInitialData());
+  const getGenresInitialData = () => {
+    return movieContext.state.data.Genres.length
+      ? ((movieContext.state.data.Genres as any) as GenresData)
+      : undefined;
+  };
+
+  const [genres, setGenres] = useState<GenresData | undefined>(
+    getGenresInitialData()
+  );
 
   const inputStyles: React.CSSProperties = {
     margin: '8px',
@@ -177,9 +185,12 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
                 onChange={handleGenresChange}
                 input={<Input />}
                 MenuProps={MenuProps}
-                onBlur={() => handleFieldBlur('Genres', genres, () => movieContext.setGenres(genres!))}
+                onBlur={() =>
+                  handleFieldBlur('Genres', genres, () =>
+                    movieContext.setGenres(genres!)
+                  )
+                }
                 error={movieContext.state.validity.Genres !== ''}
-                
               >
                 {allGenres.map((genre) => (
                   <MenuItem key={genre} value={genre}>
@@ -197,7 +208,11 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
               label={'Imdb link'}
               style={inputStyles}
               value={imdbLink}
-              onBlur={() => handleFieldBlur('ImdbLink', imdbLink, () => movieContext.setImdbLink(imdbLink))}
+              onBlur={() =>
+                handleFieldBlur('ImdbLink', imdbLink, () =>
+                  movieContext.setImdbLink(imdbLink)
+                )
+              }
               required
               onChange={(
                 event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>

@@ -1,11 +1,11 @@
 interface ShowToastEvent {
-    type:'OPEN';
-    message:string;
-    alertType: 'success' | 'error'
+  type: 'OPEN';
+  message: string;
+  alertType: 'success' | 'error';
 }
 
 interface HideToastEvent {
-    type:'CLOSE'
+  type: 'CLOSE';
 }
 
 export type ToastEvent = ShowToastEvent | HideToastEvent;

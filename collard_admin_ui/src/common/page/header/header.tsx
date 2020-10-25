@@ -26,7 +26,7 @@ export const AppHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <AppBar position="static" style={{zIndex:1000}}>
+    <AppBar position="static" style={{ zIndex: 1000 }}>
       <Toolbar>
         <IconButton
           edge="start"

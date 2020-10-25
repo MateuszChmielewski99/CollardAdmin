@@ -1,3 +1,3 @@
 export type MovieMainInfoProps = {
-    isNameDisabled?:boolean
-}
+  isNameDisabled?: boolean;
+};

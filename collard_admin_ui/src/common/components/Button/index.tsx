@@ -19,12 +19,11 @@ export const Button = (props: ButtonProps) => {
     }
   };
   const { variant, children, type, ...restProps } = props;
-  const className = `${getClassName(props.variant || ButtonTypes.Primary)} ${props.disabled ? "m_button_disabled" : ""}`
+  const className = `${getClassName(props.variant || ButtonTypes.Primary)} ${
+    props.disabled ? 'm_button_disabled' : ''
+  }`;
   return (
-    <button
-      className={className}
-      {...restProps}
-    >
+    <button className={className} {...restProps}>
       {props.children}
     </button>
   );

@@ -14,7 +14,7 @@ const AsyncAutocomplete = <T extends {}>(props: AsyncAutocompleteProps<T>) => {
       disabled={props.disabled}
       onChange={props.onChange}
       style={{
-        width:'100%'
+        width: '100%',
       }}
       renderInput={(params) => (
         <TextField
@@ -23,10 +23,10 @@ const AsyncAutocomplete = <T extends {}>(props: AsyncAutocompleteProps<T>) => {
           required
           label={props.label}
           InputLabelProps={{
-              style:{
-                  marginLeft:8,
-                  paddingBottom:4,
-              }
+            style: {
+              marginLeft: 8,
+              paddingBottom: 4,
+            },
           }}
           variant="standard"
           InputProps={{

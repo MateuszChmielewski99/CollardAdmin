@@ -1,4 +1,7 @@
-import { MovieRoutes, movieSection } from '../../movie/common/routes/movie-routes';
+import {
+  MovieRoutes,
+  movieSection,
+} from '../../movie/common/routes/movie-routes';
 import { RouteSection } from './RouteSection';
 import { RouteItem } from './RouteItem';
 

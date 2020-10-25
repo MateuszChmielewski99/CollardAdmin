@@ -7,13 +7,20 @@ import { MovieMainInfoProps } from '../main-info/MovieInfoProps';
 
 const MovieInfo = (props: MovieMainInfoProps) => {
   return (
-    <Stack style={{ height: '90%', marginBottom:20, width:'71%', flexWrap:'wrap' }}>
-      <Stack horizontal alignItems={"flex-start"}>
+    <Stack
+      style={{
+        height: '90%',
+        marginBottom: 20,
+        width: '71%',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Stack horizontal alignItems={'flex-start'}>
         <MovieMainInfo isNameDisabled={props.isNameDisabled} />
         <LeadingActorsComponent />
       </Stack>
-      <Stack style={{marginTop:30}}>
-      <MovieAditionalInfo />
+      <Stack style={{ marginTop: 30 }}>
+        <MovieAditionalInfo />
       </Stack>
     </Stack>
   );

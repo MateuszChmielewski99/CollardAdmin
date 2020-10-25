@@ -15,8 +15,8 @@ const initState: ToastState = {
 
 const ToastContext = createContext<{
   show: (type: 'success' | 'error', message: string) => void;
-  close:() => void;
-  state:ToastState
+  close: () => void;
+  state: ToastState;
 } | null>(null);
 
 export const useToastContext = () => {
@@ -29,7 +29,6 @@ export const useToastContext = () => {
   return ctx;
 };
 
-
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [state, send] = useReducer(toastReducer, initState);
 
@@ -39,15 +38,17 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
       alertType: type,
       message,
     });
-  }
+  };
 
   const close = () => {
     send({
-      type:'CLOSE'
-    })
-  }
+      type: 'CLOSE',
+    });
+  };
 
-  return( <ToastContext.Provider value={{show,state,close}}> 
-    {children}
-  </ToastContext.Provider>)
+  return (
+    <ToastContext.Provider value={{ show, state, close }}>
+      {children}
+    </ToastContext.Provider>
+  );
 };
