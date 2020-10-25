@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ToastProvider } from './common/toast/context/ToastState';
 
 ReactDOM.render(
   <React.StrictMode>
+    <ToastProvider>
     <App />
+    </ToastProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

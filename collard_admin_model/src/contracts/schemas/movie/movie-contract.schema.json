@@ -29,16 +29,10 @@
       "description": "Year of production"
     },
     "OriginalCountry": {
-      "type": "array",
-      "items": {
         "$ref": "../../../common/common-definitions.schema.json#/definitions/EntityReference"
-      }
     },
     "OriginalLanguage": {
-      "type": "array",
-      "items": {
         "$ref": "../../../common/common-definitions.schema.json#/definitions/EntityReference"
-      }
     },
     "ImdbLink": {
       "type": "string"

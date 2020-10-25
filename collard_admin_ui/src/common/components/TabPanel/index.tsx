@@ -10,7 +10,7 @@ const TabPanel = (props: TabPanelProps) => {
     <Tabs
       value={props.value}
       onChange={props.onChange}
-      style={{ width: '100%', color: '#282c34' }}
+      style={{ width: '100%', color: '#282c34', zIndex:0 }}
       indicatorColor="primary"
     >
       {props.items.map((item) => (

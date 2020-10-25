@@ -25,81 +25,48 @@ export interface UpdateMovieRequest {
   ImdbScore: number;
   Genres:
     | []
+    | ["Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"]
     | [
-        | 'Animation'
-        | 'Action'
-        | 'Comedy'
-        | 'Family'
-        | 'Horror'
-        | 'Thriller'
-        | 'Crime'
-        | 'Drama'
-        | 'Romance'
-        | 'Fantasy'
+        (
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
+        ),
+        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
       ]
     | [
         (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
         ),
         (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        )
-      ]
-    | [
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
         ),
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        ),
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        )
+        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
       ];
   /**
    * Leading actors

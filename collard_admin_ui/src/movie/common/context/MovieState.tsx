@@ -1,13 +1,14 @@
-import { CreateMovieRequest, EntityReference } from 'collard_admin_models';
+import { CreateMovieRequest, EntityReference, MovieContract } from 'collard_admin_models';
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 import { movieReducer } from './MovieReducre';
 import { LeadingActorsData, GenresData } from './MovieEvents';
 import MovieErrors from '../types/MovieErrors';
 
+
 export type MovieState = {
   data: CreateMovieRequest;
   isValid: boolean;
-  validity:MovieErrors;
+  validity: MovieErrors;
 };
 
 const emptyEntityRef: EntityReference = {
@@ -28,25 +29,25 @@ const init: MovieState = {
     OriginalCountry: undefined,
     OriginalLanguage: undefined,
   },
-  validity:{
-    Director:'',
-    Genres:'',
-    ImagesUrls:'',
-    ImdbLink:'',
-    ImdbScore:'',
-    LeadingActors:'',
-    Name:'',
-    OriginalCountry:'',
-    OriginalLanguage:'',
-    Year:''
+  validity: {
+    Director: '',
+    Genres: '',
+    ImagesUrls: '',
+    ImdbLink: '',
+    ImdbScore: '',
+    LeadingActors: '',
+    Name: '',
+    OriginalCountry: '',
+    OriginalLanguage: '',
+    Year: '',
   },
   isValid: false,
 };
 
 const MovieContext = createContext<{
   setImagesUrls: (urls: string[]) => void;
-  setOriginalLanguages: (languages: EntityReference[]) => void;
-  setOriginalCountr: (countries: EntityReference[]) => void;
+  setOriginalLanguages: (languages: EntityReference) => void;
+  setOriginalCountr: (countries: EntityReference) => void;
   setYear: (year: number) => void;
   setLeadingActors: (actors: LeadingActorsData) => void;
   setImdbScore: (score: number) => void;
@@ -55,7 +56,11 @@ const MovieContext = createContext<{
   setName: (name: string) => void;
   setDirector: (director: EntityReference) => void;
   setIsVald: (isValid: boolean) => void;
-  setFieldErrorMessage:(fieldName:keyof CreateMovieRequest, errorMessage:string) => void;
+  setData:(data:MovieContract) => void;
+  setFieldErrorMessage: (
+    fieldName: keyof CreateMovieRequest,
+    errorMessage: string
+  ) => void;
   state: MovieState;
 } | null>(null);
 
@@ -72,13 +77,23 @@ export const useMovieContext = () => {
 export const MovieProvider = ({ children }: { children: ReactNode }) => {
   const [state, send] = useReducer(movieReducer, init);
 
-  const setFieldErrorMessage = (fieldName:keyof CreateMovieRequest, errorMessage:string) => {
+  const setData = (data:MovieContract) => {
     send({
-      type:'SET_FIELD_ERROR_MESSAGE',
-      errorMessage:errorMessage,
-      fieldName:fieldName
+      type:'SET_DATA',
+      data
     })
   }
+
+  const setFieldErrorMessage = (
+    fieldName: keyof CreateMovieRequest,
+    errorMessage: string
+  ) => {
+    send({
+      type: 'SET_FIELD_ERROR_MESSAGE',
+      errorMessage: errorMessage,
+      fieldName: fieldName,
+    });
+  };
   const setImagesUrls = (urls: string[]) => {
     send({
       type: 'SET_IMAGES_URLS',
@@ -86,14 +101,14 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const setOriginalLanguages = (data: EntityReference[]) => {
+  const setOriginalLanguages = (data: EntityReference) => {
     send({
       type: 'SET_ORIGINAL_LANGUAGE',
       data,
     });
   };
 
-  const setOriginalCountr = (data: EntityReference[]) => {
+  const setOriginalCountr = (data: EntityReference) => {
     send({
       type: 'SET_ORIGINAL_COUNTRY',
       data,
@@ -159,6 +174,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
   return (
     <MovieContext.Provider
       value={{
+        setData,
         setFieldErrorMessage,
         setDirector,
         setGenres,

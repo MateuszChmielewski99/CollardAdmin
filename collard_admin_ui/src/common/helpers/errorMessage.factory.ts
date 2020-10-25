@@ -9,7 +9,6 @@ export const createErrorMessage = (
   error: Ajv.ErrorObject | null | undefined
 ): ValidationError | undefined => {
   if (!error) return undefined;
-  console.log(error);
   switch (error.keyword) {
     case 'required':
       return {
@@ -29,10 +28,10 @@ export const createErrorMessage = (
         errorMessage: `Invalid ${error.dataPath.split('/').pop()}`,
       };
     case 'maxItems':
-        return {
-            property:getPropertyName(error.dataPath),
-            errorMessage: error.message || ''
-        }
+      return {
+        property: getPropertyName(error.dataPath),
+        errorMessage: error.message || '',
+      };
     default:
       return undefined;
   }

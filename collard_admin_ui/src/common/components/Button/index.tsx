@@ -15,13 +15,14 @@ export const Button = (props: ButtonProps) => {
   const getClassName = (type: ButtonTypes) => {
     switch (type) {
       case ButtonTypes.Primary:
-        return 'ButtonPrimary';
+        return 'm_button_primary';
     }
   };
   const { variant, children, type, ...restProps } = props;
+  const className = `${getClassName(props.variant || ButtonTypes.Primary)} ${props.disabled ? "m_button_disabled" : ""}`
   return (
     <button
-      className={getClassName(props.variant || ButtonTypes.Primary)}
+      className={className}
       {...restProps}
     >
       {props.children}

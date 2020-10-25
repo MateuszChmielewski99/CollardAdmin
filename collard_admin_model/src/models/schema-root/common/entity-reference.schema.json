@@ -1,16 +1,1 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "schema-root/entityReference",
-  "title": "EntityReference",
-  "description": "Reference to Entity",
-  "type": "object",
-  "required": ["Id", "Name"],
-  "properties": {
-    "Id": {
-      "type": "string",
-      "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
-    },
-    "Name": { "type": "string" }
-  },
-  "additionalProperties": false
-}
+{"$schema":"http://json-schema.org/draft-07/schema#","$id":"schema-root/entityReference","title":"EntityReference","description":"Reference to Entity","type":"object","required":["Id","Name"],"properties":{"Id":{"type":"string","pattern":"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"},"Name":{"type":"string"}},"additionalProperties":false}

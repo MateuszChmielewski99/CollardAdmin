@@ -25,90 +25,57 @@ export interface MovieBaseModel {
   OriginalCountry?: {
     Id: string;
     Name: string;
-  }[];
+  };
   OriginalLanguage?: {
     Id: string;
     Name: string;
-  }[];
+  };
   ImdbLink: string;
   ImdbScore: number;
   Genres:
     | []
+    | ["Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"]
     | [
-        | 'Animation'
-        | 'Action'
-        | 'Comedy'
-        | 'Family'
-        | 'Horror'
-        | 'Thriller'
-        | 'Crime'
-        | 'Drama'
-        | 'Romance'
-        | 'Fantasy'
+        (
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
+        ),
+        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
       ]
     | [
         (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
         ),
         (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        )
-      ]
-    | [
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
+          | "Animation"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
         ),
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        ),
-        (
-          | 'Animation'
-          | 'Action'
-          | 'Comedy'
-          | 'Family'
-          | 'Horror'
-          | 'Thriller'
-          | 'Crime'
-          | 'Drama'
-          | 'Romance'
-          | 'Fantasy'
-        )
+        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
       ];
   /**
    * Leading actors

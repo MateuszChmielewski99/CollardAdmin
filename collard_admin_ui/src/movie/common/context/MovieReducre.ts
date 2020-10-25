@@ -1,10 +1,18 @@
+import { MovieContract } from 'collard_admin_models';
 import produce from 'immer';
+
 import { MovieEvents } from './MovieEvents';
 import { MovieState } from './MovieState';
 
 export const movieReducer = (draft: MovieState, event: MovieEvents) => {
   return movieProducer(draft, event);
 };
+
+const getMovieData = (eventData:MovieContract) => {
+  const {id, ...rest} = eventData;
+  return rest;
+}
+
 
 const movieProducer = produce((draft: MovieState, event: MovieEvents) => {
   switch (event.type) {
@@ -41,8 +49,11 @@ const movieProducer = produce((draft: MovieState, event: MovieEvents) => {
     case 'SET_YEAR':
       draft.data.Year = event.data;
       break;
-    case "SET_FIELD_ERROR_MESSAGE":
+    case 'SET_FIELD_ERROR_MESSAGE':
       draft.validity[event.fieldName] = event.errorMessage;
+      break;
+    case 'SET_DATA':
+      draft.data = getMovieData(event.data);
       break;
     default:
       throw new Error('Invalid event type');

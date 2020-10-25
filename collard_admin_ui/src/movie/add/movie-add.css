@@ -1,7 +1,6 @@
 .MovieMainSection {
   flex: 0 1 70vw;
   height: 100vh;
-  padding: 16px;
   display: flex;
   flex-direction: column;
 }

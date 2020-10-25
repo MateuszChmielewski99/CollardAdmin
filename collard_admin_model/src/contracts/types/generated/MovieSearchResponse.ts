@@ -32,11 +32,11 @@ export interface MovieContract {
   OriginalCountry?: {
     Id: string;
     Name: string;
-  }[];
+  };
   OriginalLanguage?: {
     Id: string;
     Name: string;
-  }[];
+  };
   ImdbLink: string;
   ImdbScore: number;
   Genres:

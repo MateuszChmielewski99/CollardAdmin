@@ -1,13 +1,1 @@
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "schema-root/requests/listing",
-  "title": "ListingRequest",
-  "description": "Movie model",
-  "type": "object",
-  "required": ["PageSize", "PageNumber"],
-  "properties": {
-    "PageSize": { "type": "number", "default": 10 },
-    "PageNumber": { "type": "number", "default": 1 }
-  },
-  "additionalProperties": false
-}
+{"$schema":"http://json-schema.org/draft-07/schema#","$id":"schema-root/requests/listing","title":"ListingRequest","description":"Movie model","type":"object","required":["PageSize","PageNumber"],"properties":{"PageSize":{"type":"number","default":10},"PageNumber":{"type":"number","default":1}},"additionalProperties":false}

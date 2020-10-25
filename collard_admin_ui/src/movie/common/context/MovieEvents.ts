@@ -1,4 +1,8 @@
-import { CreateMovieRequest, EntityReference } from 'collard_admin_models';
+import {
+  CreateMovieRequest,
+  EntityReference,
+  MovieContract,
+} from 'collard_admin_models';
 
 export type GenresData = Pick<CreateMovieRequest, 'Genres'>;
 export type LeadingActorsData = Pick<CreateMovieRequest, 'LeadingActors'>;
@@ -40,12 +44,12 @@ interface SetYear {
 
 interface SetOriginalCountr {
   type: 'SET_ORIGINAL_COUNTRY';
-  data: EntityReference[] | undefined;
+  data: EntityReference | undefined;
 }
 
 interface SetOriginalLanguage {
   type: 'SET_ORIGINAL_LANGUAGE';
-  data: EntityReference[] | undefined;
+  data: EntityReference | undefined;
 }
 
 interface SetIsValid {
@@ -59,9 +63,14 @@ interface SetImagesUrls {
 }
 
 interface SetFieldErrorMessage {
-  type:'SET_FIELD_ERROR_MESSAGE';
-  fieldName:keyof CreateMovieRequest;
-  errorMessage:string;
+  type: 'SET_FIELD_ERROR_MESSAGE';
+  fieldName: keyof CreateMovieRequest;
+  errorMessage: string;
+}
+
+interface SetData {
+  type: 'SET_DATA';
+  data: MovieContract;
 }
 
 export type MovieEvents =
@@ -76,4 +85,5 @@ export type MovieEvents =
   | SetImdbLink
   | SetIsValid
   | SetImagesUrls
-  | SetFieldErrorMessage;
+  | SetFieldErrorMessage
+  | SetData;

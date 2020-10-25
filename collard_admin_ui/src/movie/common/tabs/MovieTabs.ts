@@ -11,4 +11,16 @@ const MovieAddTabs: TabPanelItem[] = [
   },
 ];
 
+
+export const MovieEditTabs: TabPanelItem[] = [
+  {
+    key: 'movie-edit-info',
+    sectionName: 'Info',
+  },
+  {
+    key: 'movie-edit-photo',
+    sectionName: 'Photo',
+  },
+];
+
 export default MovieAddTabs;
