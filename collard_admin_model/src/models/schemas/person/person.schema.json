@@ -3,15 +3,17 @@
   "$id": "schemas/person",
   "title": "Person",
   "description": "Person",
-  "allOf": [
-    {
+  "allOf": [{
       "type": "object",
-      "required": ["Name", "LastName"],
+      "required": ["Name", "LastName","type"],
       "properties": {
         "Name": {
           "type": "string"
         },
         "LastName": {
+          "type": "string"
+        },
+        "type": {
           "type": "string"
         }
       },

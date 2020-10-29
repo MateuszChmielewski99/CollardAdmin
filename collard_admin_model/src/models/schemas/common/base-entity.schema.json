@@ -4,13 +4,13 @@
   "title": "BaseDocument",
   "description": "Base properties of all documents in db",
   "type": "object",
-  "required": ["_ts", "Id"],
+  "required": ["_ts", "_id"],
   "properties": {
     "_ts": {
       "type": "number",
       "description": "timestamp of creation"
     },
-    "id": {
+    "_id": {
       "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
     }
   },

@@ -11,6 +11,7 @@
 export type Person = {
   Name: string;
   LastName: string;
+  type: string;
 } & BaseDocument;
 
 /**
@@ -21,5 +22,5 @@ export interface BaseDocument {
    * timestamp of creation
    */
   _ts: number;
-  id?: string;
+  _id: string;
 }

@@ -20,7 +20,7 @@ const configureAjv = () => {
 };
 
 const getMakeValidatorFun = () => {
-  return 'function makeValidator(key:string):Ajv.ValidateFunction {return ajv.getSchema(key);}';
+  return 'function makeValidator(key:string):Ajv.ValidateFunction {return ajv.getSchema(key)!;}';
 };
 
 const addSchemaToAjv = () => {

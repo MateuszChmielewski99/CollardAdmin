@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "seedMovie": "ts-node src/seed/movie_seed.ts",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "collard_admin_movie_api-1",
+  "author": "Mateusz Chmielewski",
+  "module": "dist/collard_admin_movie_api-1.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/collard_admin_movie_api-1.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/collard_admin_movie_api-1.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.6.2",
+    "husky": "^4.3.0",
+    "size-limit": "^4.6.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/mongodb": "^3.5.31",
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.6.2",
+    "collard_admin_models":"^1.1.2"
+  }
+}
