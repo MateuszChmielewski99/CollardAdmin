@@ -24,7 +24,7 @@ const MovieEdit = (props: { movieId: string }) => {
   useEffect(() => {
     movieApiService
       .getById(props.movieId)
-      .then((resp) => movieContext.setData(resp))
+      .then((resp) => movieContext.setData(resp.data))
       .catch(() => toastContext.show('error', 'Error while fetching movie'))
       .finally(() => setIsLoading(false));
   }, []);

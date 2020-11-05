@@ -11,21 +11,22 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "node dist/app.js",
-    "local": "nodemon src/app.ts",
-    "build": "tsc -p .",
+    "start": "node dist/index.js",
+    "local": "nodemon src/index.ts",
+    "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepare": "yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why",
+    "prettier-format": "prettier --write src/**/*.ts",
     "seedDirs": "ts-node src/seed/director-seed/director-seed.ts",
     "seedActors": "ts-node src/seed/actor-seed/actors-seed.ts"
   },
   "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "yarn prettier-format"
     }
   },
   "prettier": {

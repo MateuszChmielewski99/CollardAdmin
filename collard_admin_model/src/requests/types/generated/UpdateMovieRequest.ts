@@ -9,6 +9,7 @@
  * Request that is send to create new movie
  */
 export interface UpdateMovieRequest {
+  id: string;
   /**
    * Year of production
    */

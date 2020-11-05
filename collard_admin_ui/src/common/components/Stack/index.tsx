@@ -24,6 +24,7 @@ type StackProps = {
 
 export const Stack = (props: StackProps) => {
   const styles: CSSProperties = {
+    boxSizing:'border-box',
     ...props.style,
     display: 'flex',
     flexDirection: !props.horizontal ? 'column' : 'row',

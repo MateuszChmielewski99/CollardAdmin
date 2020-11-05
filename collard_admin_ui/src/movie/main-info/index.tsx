@@ -51,7 +51,8 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
 
   const inputStyles: React.CSSProperties = {
     margin: '8px',
-    width: '50%',
+    width: '300px',
+    boxSizing:'border-box'
   };
 
   const ITEM_HEIGHT = 48;
@@ -92,8 +93,6 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
     const validationResult = validateCreateMovieRequest(updated);
     movieContext.setIsVald(validationResult as boolean);
 
-    console.log(validateCreateMovieRequest.errors);
-
     const nameErrors = validateCreateMovieRequest.errors
       ?.map((s) => createErrorMessage(s))
       .filter((s) => s?.property === fieldName);
@@ -113,120 +112,126 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
     <Stack>
       <MainSection>
         <span className={'movie_add_info--main_info__title'}> Main info </span>
-        <Stack flexWrap={'wrap'}>
-          <form>
-            <TextField
-              label={'Title'}
-              onBlurCapture={() => {
-                movieContext.setName(title);
-              }}
-              required
-              style={inputStyles}
-              margin="dense"
-              onChange={handleTitleChange}
-              value={title}
-              onBlur={() => {
-                handleFieldBlur('Name', title, () =>
-                  movieContext.setName(title)
-                );
-              }}
-              error={movieContext.state.validity.Name !== ''}
-              helperText={movieContext.state.validity.Name}
-              disabled={props.isNameDisabled}
-            />
-            <Autocomplete
-              options={years}
-              getOptionLabel={(y) => y.toString()}
-              style={inputStyles}
-              value={year}
-              onBlur={() =>
-                handleFieldBlur('Year', year, () =>
-                  movieContext.setYear(year || new Date().getFullYear())
-                )
-              }
-              onChange={(e: any, value: number | null) =>
-                value && setYear(value)
-              }
-              renderInput={(params) => (
-                <TextField {...params} label="Year" required />
-              )}
-            />
-            <TextField
-              type={'number'}
-              label={'IMDB Score'}
-              margin={'dense'}
-              style={inputStyles}
-              value={imdbScore}
-              onBlur={() =>
-                handleFieldBlur('ImdbScore', imdbScore, () => {
-                  movieContext.setImdbScore(imdbScore || 0);
-                })
-              }
-              onChange={(
-                event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-              ) => {
-                const parsed = Number.parseFloat(event.target.value);
-                if (parsed < 0) return;
-                setImdbScore(parsed);
-              }}
-              required
-            />
-            <FormControl style={inputStyles} required>
-              <InputLabel
-                id="genres-select-label"
-                error={movieContext.state.validity.Genres !== ''}
-              >
-                Genres
-              </InputLabel>
-              <Select
-                labelId={'genres-select-label'}
-                multiple
-                value={genres || []}
-                onChange={handleGenresChange}
-                input={<Input />}
-                MenuProps={MenuProps}
+        <Stack horizontal>
+            <Stack flex={1} style={{flexBasis:'100%'}} justifyContent={'space-between'}>
+              <TextField
+                label={'Title'}
+                onBlurCapture={() => {
+                  movieContext.setName(title);
+                }}
+                required
+                style={inputStyles}
+                margin="dense"
+                onChange={handleTitleChange}
+                value={title}
+                onBlur={() => {
+                  handleFieldBlur('Name', title, () =>
+                    movieContext.setName(title)
+                  );
+                }}
+                error={movieContext.state.validity.Name !== ''}
+                helperText={movieContext.state.validity.Name}
+                disabled={props.isNameDisabled}
+              />
+              <Autocomplete
+                options={years}
+                getOptionLabel={(y) => y.toString()}
+                style={inputStyles}
+                value={year}
                 onBlur={() =>
-                  handleFieldBlur('Genres', genres, () =>
-                    movieContext.setGenres(genres!)
+                  handleFieldBlur('Year', year, () =>
+                    movieContext.setYear(year || new Date().getFullYear())
                   )
                 }
-                error={movieContext.state.validity.Genres !== ''}
-              >
-                {allGenres.map((genre) => (
-                  <MenuItem key={genre} value={genre}>
-                    {genre}
-                  </MenuItem>
-                ))}
-              </Select>
-              {movieContext.state.validity.Genres !== '' && (
-                <FormHelperText error>
-                  {movieContext.state.validity.Genres}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <TextField
-              label={'Imdb link'}
-              style={inputStyles}
-              value={imdbLink}
-              onBlur={() =>
-                handleFieldBlur('ImdbLink', imdbLink, () =>
-                  movieContext.setImdbLink(imdbLink)
-                )
-              }
-              required
-              onChange={(
-                event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-              ) => setImdbLink(event.target.value)}
-            />
-            <DirectorAsyncAutocomplete
-              inputStyle={inputStyles}
-              onChange={(value) => {
-                value
-                  ? movieContext.setDirector(value)
-                  : movieContext.setDirector({ Id: '', Name: '' });
-              }}
-            />
-          </form>
+                onChange={(e: any, value: number | null) =>
+                  value && setYear(value)
+                }
+                renderInput={(params) => (
+                  <TextField {...params} label="Year" required />
+                )}
+              />
+              <TextField
+                type={'number'}
+                label={'IMDB Score'}
+                margin={'dense'}
+                style={inputStyles}
+                value={imdbScore}
+                onBlur={() =>
+                  handleFieldBlur('ImdbScore', imdbScore, () => {
+                    movieContext.setImdbScore(imdbScore || 0);
+                  })
+                }
+                onChange={(
+                  event: React.ChangeEvent<
+                    HTMLInputElement | HTMLTextAreaElement
+                  >
+                ) => {
+                  const parsed = Number.parseFloat(event.target.value);
+                  if (parsed < 0) return;
+                  setImdbScore(parsed);
+                }}
+                required
+              />
+            </Stack>
+            <Stack flex={1} style={{flexBasis:'100%'}} justifyContent={'space-between'}>
+              <FormControl style={inputStyles} required>
+                <InputLabel
+                  id="genres-select-label"
+                  error={movieContext.state.validity.Genres !== ''}
+                >
+                  Genres
+                </InputLabel>
+                <Select
+                  labelId={'genres-select-label'}
+                  multiple
+                  value={genres || []}
+                  onChange={handleGenresChange}
+                  input={<Input />}
+                  MenuProps={MenuProps}
+                  onBlur={() =>
+                    handleFieldBlur('Genres', genres, () =>
+                      movieContext.setGenres(genres!)
+                    )
+                  }
+                  error={movieContext.state.validity.Genres !== ''}
+                >
+                  {allGenres.map((genre) => (
+                    <MenuItem key={genre} value={genre}>
+                      {genre}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {movieContext.state.validity.Genres !== '' && (
+                  <FormHelperText error>
+                    {movieContext.state.validity.Genres}
+                  </FormHelperText>
+                )}
+              </FormControl>
+              <TextField
+                label={'Imdb link'}
+                style={{...inputStyles, paddingBottom:14}}
+                value={imdbLink}
+                onBlur={() =>
+                  handleFieldBlur('ImdbLink', imdbLink, () =>
+                    movieContext.setImdbLink(imdbLink)
+                  )
+                }
+                required
+                onChange={(
+                  event: React.ChangeEvent<
+                    HTMLTextAreaElement | HTMLInputElement
+                  >
+                ) => setImdbLink(event.target.value)}
+              />
+              <DirectorAsyncAutocomplete
+                inputStyle={inputStyles}
+                onChange={(value) => {
+                  value
+                    ? movieContext.setDirector(value)
+                    : movieContext.setDirector({ Id: '', Name: '' });
+                }}
+              />
+            </Stack>
         </Stack>
       </MainSection>
     </Stack>

@@ -1,5 +1,9 @@
 import * as dotenv from 'dotenv';
-import { MongoClient, FilterQuery, CollectionAggregationOptions } from 'mongodb';
+import {
+  MongoClient,
+  FilterQuery,
+  CollectionAggregationOptions,
+} from 'mongodb';
 
 export class BaseRepository<T extends { _id?: string }> {
   private collectionName: string = '';
@@ -12,7 +16,7 @@ export class BaseRepository<T extends { _id?: string }> {
 
     this.client = new MongoClient(this.connectionUri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
   }
 
@@ -45,7 +49,7 @@ export class BaseRepository<T extends { _id?: string }> {
     try {
       await this.client.connect();
       const db = this.client.db();
-      result = db.collection(this.collectionName).findOne({ _id:id });
+      result = db.collection(this.collectionName).findOne({ _id: id });
     } catch (e) {
       console.error(e);
     }
@@ -57,7 +61,7 @@ export class BaseRepository<T extends { _id?: string }> {
     try {
       await this.client.connect();
       const db = this.client.db();
-      await db.collection(this.collectionName).deleteOne({ _id:id });
+      await db.collection(this.collectionName).deleteOne({ _id: id });
     } catch (e) {
       console.error(e);
     }
@@ -65,8 +69,8 @@ export class BaseRepository<T extends { _id?: string }> {
     this.client.close();
   }
 
-  public async getByQuery(query: FilterQuery<T>):Promise<T[] | undefined> {
-    let result:T[] | undefined = undefined;
+  public async getByQuery(query: FilterQuery<T>): Promise<T[] | undefined> {
+    let result: T[] | undefined = undefined;
     try {
       await this.client.connect();
       const db = this.client.db();
@@ -82,7 +86,7 @@ export class BaseRepository<T extends { _id?: string }> {
     return result;
   }
 
-  public async insertMany(data:T[]){
+  public async insertMany(data: T[]) {
     try {
       await this.client.connect();
       const db = this.client.db('Collard');
@@ -93,14 +97,17 @@ export class BaseRepository<T extends { _id?: string }> {
     this.client.close();
   }
 
-  public async agregate(pipeline?: object[] | undefined, options?: CollectionAggregationOptions | undefined){
-    let result:T[] | undefined = undefined;
+  public async agregate(
+    pipeline?: object[] | undefined,
+    options?: CollectionAggregationOptions | undefined
+  ) {
+    let result: T[] | undefined = undefined;
     try {
       await this.client.connect();
       const db = this.client.db();
       result = await db
         .collection(this.collectionName)
-        .aggregate(pipeline,options)
+        .aggregate(pipeline, options)
         .toArray();
     } catch (e) {
       console.error(e);

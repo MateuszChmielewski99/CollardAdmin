@@ -23,15 +23,15 @@ const LeadingActors = (props: LeadingActorsProps) => {
     setIsLoading(true);
     movieApiService
       .searchActors(event.target.value)
-      .then((s) => setAllActors(s))
+      .then((s) => setAllActors(s.data))
       .finally(() => setIsLoading(false));
   };
 
   return (
-    <Stack style={{ height: 'calc(100% - 80px' }}>
+    <Stack style={{ height: '100%', boxSizing:'border-box' }}>
       <Stack
-        alignItems={!props.data.length ? 'center' : 'flex-start'}
-        justifyContent={!props.data.length ? 'center' : 'flex-start'}
+        alignItems={!props.data?.length ? 'center' : 'flex-start'}
+        justifyContent={!props.data?.length ? 'center' : 'flex-start'}
       >
         {props.data.length ? (
           props.data.map((item) => (
@@ -57,7 +57,11 @@ const LeadingActors = (props: LeadingActorsProps) => {
         )}
       </Stack>
       <Stack flex={'1'}></Stack>
-      <Stack alignItems={'flex-start'} justifyContent={'center'} horizontal>
+      <Stack
+        alignItems={'flex-start'}
+        justifyContent={'center'}
+        horizontal
+      >
         <AsyncAutocomplete<EntityReference>
           getSelectedOption={(f, s) => f.Name === s.Name}
           renderItem={(s) => s.Name}

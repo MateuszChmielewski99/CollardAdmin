@@ -1,0 +1,70 @@
+http:
+  port: ${PORT:-8000}
+admin:
+  port: 9876
+  host: localhost
+
+apiEndpoints:
+  movie:
+    host: "*"
+    paths: ['/movie', '/movie/*']
+  person:
+    host: "*"
+    paths: ['/actor/search', '/actor/search/*', '/director/search','/director/search/*']
+  lookups:
+    host: '*'
+    paths: ['/language/*', '/country/*']
+
+serviceEndpoints:
+  moviesService:
+    url: ${MOVIE_URL:-http://localhost:5050}
+  personService:
+    url: ${PERSON_URL:-http://localhost:5000}
+  lookupService:
+    url: ${LOOKUP_URL:-http://localhost:6000}
+
+policies:
+  - cors
+  - proxy
+pipelines:
+  movieEndpoints:
+    apiEndpoints:
+      - movie
+    policies:   
+    - cors:
+          action:
+            origin: ${SPA_URL}
+            methods: 'HEAD,PUT,PATCH,POST,DELETE'
+            allowedHeaders: '*'
+    - proxy:
+        action:
+          serviceEndpoint: moviesService
+  personEndpoints:
+    apiEndpoints:
+      - person
+    policies:   
+    - cors:
+          action:
+            origin: ${SPA_URL}
+            methods: 'GET'
+            allowedHeaders: '*'
+    - proxy:
+        action:
+          serviceEndpoint: personService
+          prependPath: false
+  lookupEndpoints:
+    apiEndpoints:
+      - lookups
+    policies:   
+    - cors:
+          action:
+            origin: ${SPA_URL}
+            methods: 'GET'
+            allowedHeaders: '*'
+    - proxy:
+        action:
+          serviceEndpoint: lookupService
+
+    
+        
+

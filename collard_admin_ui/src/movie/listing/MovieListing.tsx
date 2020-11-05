@@ -17,11 +17,13 @@ import {
 import { MovieApiService } from '../MovieApiService';
 import { useToastContext } from '../../common/toast/context/ToastState';
 import { CircularProgress } from '@material-ui/core';
+import PaginationFooter from '../../common/components/PaginationFooter';
 
 export const MovieListing = () => {
   const history = useHistory();
   const movieApiService = new MovieApiService();
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<MovieContract[]>([]);
+  const [count, setCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
   const toastContext = useToastContext();
   const [filters, setFilters] = useState<MovieListingFilters>(
@@ -29,11 +31,13 @@ export const MovieListing = () => {
   );
 
   useEffect(() => {
-    setData([]);
     setIsLoading(true);
     movieApiService
       .fetchListingData(filters)
-      .then((resp) => setData(resp as any))
+      .then((resp) => {
+        setData(resp.data.Movies);
+        setCount(resp.data.Count);
+      })
       .catch(() => toastContext.show('error', 'Error while fetching data'))
       .finally(() => setIsLoading(false));
   }, [filters]);
@@ -43,6 +47,12 @@ export const MovieListing = () => {
       return { ...prev, pageNumber };
     });
   };
+
+  const total = (from: number, to: number) => (
+    <p>
+      Showing {from} to {to} of {count} Results
+    </p>
+  );
 
   const handleSortChange = (
     sortName: string | number | symbol,
@@ -60,6 +70,7 @@ export const MovieListing = () => {
   };
 
   const handlePageSizeChange = (pageSize: number) => {
+    setData([]);
     setFilters((prev) => {
       return { ...prev, pageSize };
     });
@@ -73,16 +84,8 @@ export const MovieListing = () => {
     onPageChange: handlePageNumberChange,
     onSortChange: handleSortChange,
     onSizePerPageList: handlePageSizeChange,
-    sizePerPageList: [
-      {
-        text: '5',
-        value: 5,
-      },
-      {
-        text: '10',
-        value: 10,
-      },
-    ],
+    paginationShowsTotal: total,
+    total: count,
   };
 
   const ctaItems = (
@@ -95,7 +98,7 @@ export const MovieListing = () => {
   );
 
   const renderDirector = (cell: any, row: any) => {
-    return isLoading ? <div className="shine"> </div> : cell.Name;
+    return cell.Name;
   };
 
   const renderName = (cell: string, row: MovieContract) => {
@@ -116,30 +119,34 @@ export const MovieListing = () => {
           justifyContent={isLoading ? 'center' : ''}
         >
           {!isLoading ? (
-            <BootstrapTable
-              data={data}
-              options={tableOptions}
-              striped
-              pagination
-            >
-              <TableHeaderColumn
-                isKey
-                dataSort
-                dataFormat={renderName}
-                dataField="Name"
-              >
-                Title
-              </TableHeaderColumn>
-              <TableHeaderColumn
-                dataField="Director"
-                dataFormat={renderDirector}
-              >
-                Director
-              </TableHeaderColumn>
-              <TableHeaderColumn dataField="Year">
-                Year of production
-              </TableHeaderColumn>
-            </BootstrapTable>
+            <>
+              <BootstrapTable data={data} options={tableOptions} striped>
+                <TableHeaderColumn
+                  isKey
+                  dataSort
+                  dataFormat={renderName}
+                  dataField="Name"
+                >
+                  Title
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                  dataField="Director"
+                  dataFormat={renderDirector}
+                >
+                  Director
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="Year">
+                  Year of production
+                </TableHeaderColumn>
+              </BootstrapTable>
+              <PaginationFooter
+                onPageChange={handlePageNumberChange}
+                onPageSizeChange={handlePageSizeChange}
+                totalCount={count}
+                pageSize={filters.pageSize}
+                currentPage={filters.pageNumber}
+              />
+            </>
           ) : (
             <Stack alignSelf={'center'}>
               <CircularProgress />

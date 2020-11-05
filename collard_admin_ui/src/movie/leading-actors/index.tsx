@@ -47,7 +47,7 @@ export const LeadingActorsComponent = () => {
   };
 
   return (
-    <Stack style={{ paddingLeft: '30px', height: '100%' }}>
+    <Stack style={{ paddingLeft: '30px', height: '100%', width:'100%' }}>
       <MainSection>
         <span
           style={{
@@ -57,13 +57,15 @@ export const LeadingActorsComponent = () => {
         >
           Leading Actors
         </span>
-        <LeadingActors
-          data={movieContext.state.data.LeadingActors}
-          onAdd={handleAddActor}
-          onDelete={handleDeleteActor}
-          errorMessage={movieContext.state.validity.LeadingActors}
-          onChange={() => {}}
-        />
+        <Stack style={{height:'calc(100% - 4rem - 30px)', boxSizing:'border-box' }}>
+          <LeadingActors
+            data={movieContext.state.data.LeadingActors}
+            onAdd={handleAddActor}
+            onDelete={handleDeleteActor}
+            errorMessage={movieContext.state.validity.LeadingActors}
+            onChange={() => {}}
+          />
+        </Stack>
       </MainSection>
     </Stack>
   );

@@ -1,5 +1,5 @@
 {
-  "version": "1.1.4",
+  "version": "1.2.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,7 +20,8 @@
     "prettier-format": "prettier --write src/**/*",
     "genTypes": "ts-node ./src/scripts/generate-types.ts",
     "genRoots": "ts-node ./src/scripts/generate-parsed-schemas.ts",
-    "genVals": "ts-node ./src/scripts/generate-validators.ts"
+    "genVals": "ts-node ./src/scripts/generate-validators.ts",
+    "publish": "yarn build && npm publish --access=public"
   },
   "peerDependencies": {},
   "husky": {

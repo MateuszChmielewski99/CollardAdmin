@@ -6,9 +6,9 @@
  */
 
 /**
- * Movie model
+ * Listing request
  */
 export interface ListingRequest {
-  PageSize: number;
-  PageNumber: number;
+  PageSize: string;
+  PageNumber: string;
 }

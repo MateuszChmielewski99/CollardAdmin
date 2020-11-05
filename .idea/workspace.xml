@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ece5656-2465-4f38-be48-6ebdf185adb7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/collard_admin_models/src/models/validators/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collard_admin_models/src/scripts/black-list.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collard_admin_models/src/scripts/generate-validators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collard_admin_models/src/scripts/processSchemas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/contracts/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/contracts/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/contracts/movie/MovieContract.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/contracts/movie/MovieContract.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/schema-root/common/entity-reference.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/schema-root/common/entity-reference.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/schema-root/movie/movie.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/schema-root/movie/movie.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/common/common-definitions.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/common/common-definitions.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/common/entity-reference.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/common/entity-reference.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/movie/movie.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/schemas/movie/movie.schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/models/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/models/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/scripts/generate-parsed-schemas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/scripts/generate-parsed-schemas.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/src/scripts/generate-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/src/scripts/generate-types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collard_admin_models/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/collard_admin_models/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="package.json" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/collard_admin_ui/package.json" />
+  </component>
+  <component name="ProjectId" id="1ieY3xjV4zOlplmSd6De1mvwfW7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="D:\dev\private\CollardAdmin\collard_admin_ui\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\private\CollardAdmin\collard_admin_models\src\scripts\generate-roots" />
+      <recent name="D:\dev\private\CollardAdmin\collard_admin_models\src\models\schemas\movie" />
+      <recent name="D:\dev\private\CollardAdmin\collard_admin_models\src\models\types" />
+      <recent name="D:\dev\private\CollardAdmin\collard_admin_ui\src\movie" />
+      <recent name="D:\dev\private\CollardAdmin\collard_admin_models\src\contracts\movie" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ece5656-2465-4f38-be48-6ebdf185adb7" name="Default Changelist" comment="" />
+      <created>1602269328716</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602269328716</updated>
+      <workItem from="1602269329770" duration="2901000" />
+      <workItem from="1602273395075" duration="164000" />
+      <workItem from="1602273722667" duration="305000" />
+      <workItem from="1602274325670" duration="608000" />
+      <workItem from="1602274942468" duration="46000" />
+      <workItem from="1602275243294" duration="649000" />
+      <workItem from="1602341939253" duration="39000" />
+      <workItem from="1602348985752" duration="11428000" />
+      <workItem from="1602418360556" duration="7980000" />
+      <workItem from="1602447122476" duration="185000" />
+      <workItem from="1602447416851" duration="194000" />
+      <workItem from="1602447624766" duration="242000" />
+      <workItem from="1602447972687" duration="416000" />
+      <workItem from="1602448400603" duration="261000" />
+      <workItem from="1602448679770" duration="2023000" />
+      <workItem from="1602697024006" duration="1816000" />
+      <workItem from="1602699016565" duration="9213000" />
+      <workItem from="1602708263337" duration="1589000" />
+      <workItem from="1602783464675" duration="257000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-2467" y="-286" width="1862" height="926" key="DiffContextDialog" timestamp="1602697201231">
+      <screen x="-2560" y="-379" width="2048" height="1112" />
+    </state>
+    <state x="-2467" y="-286" width="1862" height="926" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040/-2560.-379.2048.1112@-2560.-379.2048.1112" timestamp="1602697201231" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1602274027807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602274027807" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1602274027807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602274027807" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1602274027807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602274027807" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1602274027807">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602274027807" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1602341970179">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602341970179" />
+    <state x="-1985" y="-183" width="896" height="915" key="search.everywhere.popup" timestamp="1602703482391">
+      <screen x="-2560" y="-379" width="2048" height="1112" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/-1920.0.1920.1040@0.0.1536.824" timestamp="1602434425766" />
+    <state x="-1985" y="-183" width="896" height="915" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040/-2560.-379.2048.1112@-2560.-379.2048.1112" timestamp="1602703482391" />
+  </component>
+</project>

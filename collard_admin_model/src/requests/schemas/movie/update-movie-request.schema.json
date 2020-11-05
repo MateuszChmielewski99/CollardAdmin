@@ -10,9 +10,13 @@
     "ImdbScore",
     "Genres",
     "Director",
-    "LeadingActors"
+    "LeadingActors",
+    "id"
   ],
   "properties": {
+    "id": {
+      "$ref": "../../../common/common-definitions.schema.json#/definitions/Guid"
+    },
     "Year": {
       "type": "number",
       "description": "Year of production"

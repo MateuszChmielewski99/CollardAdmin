@@ -28,14 +28,19 @@ const MovieAditionalInfo = () => {
   const fetchCountries = () => {
     movieApiService
       .fetchCountries()
-      .then((resp) => setCountries(resp))
+      .then((resp) => setCountries(resp.data))
       .catch(() =>
         toastContext.show('error', 'Error while fatching countries')
       );
   };
 
   const fetchLanguages = () => {
-    movieApiService.fetchLanguages().then((resp) => setLanguages(resp));
+    movieApiService
+      .fetchLanguages()
+      .then((resp) => setLanguages(resp.data))
+      .catch(() =>
+        toastContext.show('error', 'Error while fatching countries')
+      );
   };
 
   const handleFieldBlur = (fieldName: keyof CreateMovieRequest) => {

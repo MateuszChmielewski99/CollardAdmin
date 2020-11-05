@@ -12,7 +12,7 @@ export type MovieListingFilters = {
 
 export const getDefaultMovieListingFilters = (): MovieListingFilters => {
   return {
-    pageSize: 10,
+    pageSize: 2,
     sortName: 'Name',
     sortOrder: SortOrder.DESC,
     pageNumber: 1,

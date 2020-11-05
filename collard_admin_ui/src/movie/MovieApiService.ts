@@ -1,124 +1,76 @@
 import {
   CreateMovieRequest,
   EntityReference,
+  ListingRequest,
   MovieContract,
-  validateCreateMovieRequest,
+  MovieSearchResponse,
 } from 'collard_admin_models';
-import { generateUuid } from '../common/helpers/generateUuid';
 import { MovieListingFilters } from './listing/filters/MovieListingFilters';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export class MovieApiService {
+  private baseUrl: string = 'http://localhost:8000';
+
   save(movie: CreateMovieRequest): Promise<void> {
-    validateCreateMovieRequest(movie);
-    return Promise.resolve();
+    const requestUrl = `${this.baseUrl}/movie/create`;
+    return axios.post(requestUrl, movie);
   }
 
-  getById(id: string): Promise<MovieContract> {
-    const data: MovieContract = {
-      Director: {
-        Id: 'a3f0f15e-1627-11eb-adc1-0242ac120002',
-        Name: 'example',
+  getById(id: string): Promise<AxiosResponse<MovieContract>> {
+    const requestUrl = `${this.baseUrl}/movie`;
+    const config: AxiosRequestConfig = {
+      params: {
+        id,
       },
-      Genres: ['Action'],
-      ImdbLink: 'some link',
-      ImdbScore: 9.0,
-      LeadingActors: [{ Id: '123', Name: 'example' }],
-      Name: 'Mock data',
-      Year: 1999,
-      id: '123',
-      OriginalCountry: {
-        Id: '123',
-        Name: 'example country',
+    };
+    return axios.get(requestUrl, config);
+  }
+
+  fetchListingData(
+    filters: MovieListingFilters
+  ): Promise<AxiosResponse<MovieSearchResponse>> {
+    const requestUrl = `${this.baseUrl}/movie/page`;
+    const listingRequest: ListingRequest = {
+      PageNumber: filters.pageNumber.toString(),
+      PageSize: filters.pageSize.toString(),
+    };
+    const config: AxiosRequestConfig = {
+      params: {
+        ...listingRequest,
       },
-      OriginalLanguage: {
-        Id: '123',
-        Name: 'example lang',
+    };
+    return axios.get(requestUrl, config);
+  }
+
+  searchDirectors(query: string): Promise<AxiosResponse<EntityReference[]>> {
+    const requestUrl = `${this.baseUrl}/director/search`;
+    const config: AxiosRequestConfig = {
+      params: {
+        query,
       },
     };
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(data);
-      }, 1000);
-    });
+    return axios.get(requestUrl, config);
   }
 
-  fetchListingData(filters: MovieListingFilters) {
-    const data = [
-      {
-        id: 'a3f0f15e-1627-11eb-adc1-0242ac120002',
-        Name: 'Harry Potter',
-        Year: '2013',
-        Director: { Id: '123', Name: 'Nie wiem' },
+  searchActors(query: string): Promise<AxiosResponse<EntityReference[]>> {
+    const requestUrl = `${this.baseUrl}/actor/search`;
+    const config: AxiosRequestConfig = {
+      params: {
+        query,
       },
-      {
-        id: 'a3f0f15e-1627-11eb-adc1-0242ac120002',
-        Name: 'Harry Potter 1',
-        Year: '2012',
-        Director: { Id: '1234', Name: 'Nie wiem2' },
-      },
-    ];
+    };
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(data);
-      }, 1000);
-    });
+    return axios.get(requestUrl, config);
   }
 
-  searchDirectors(query: string) {
-    const exampleDirectors: EntityReference[] = [
-      {
-        Id: generateUuid(),
-        Name: 'Dir 1',
-      },
-      {
-        Id: generateUuid(),
-        Name: 'Dir 2',
-      },
-    ];
-    return Promise.resolve(exampleDirectors);
+  fetchCountries(): Promise<AxiosResponse<EntityReference[]>> {
+    const requestUrl = `${this.baseUrl}/country/get_all`;
+    return axios.get(requestUrl);
   }
 
-  searchActors(query: string) {
-    const exampleDirectors: EntityReference[] = [
-      {
-        Id: generateUuid(),
-        Name: 'Dir 1',
-      },
-      {
-        Id: generateUuid(),
-        Name: 'Dir 2',
-      },
-    ];
-    return Promise.resolve(exampleDirectors);
-  }
-
-  fetchCountries(): Promise<EntityReference[]> {
-    const exampleDirectors: EntityReference[] = [
-      {
-        Id: generateUuid(),
-        Name: 'Country 1',
-      },
-      {
-        Id: generateUuid(),
-        Name: 'Country 2',
-      },
-    ];
-    return Promise.reject(exampleDirectors);
-  }
-
-  fetchLanguages(): Promise<EntityReference[]> {
-    const exampleDirectors: EntityReference[] = [
-      {
-        Id: generateUuid(),
-        Name: 'Lang 1',
-      },
-      {
-        Id: generateUuid(),
-        Name: 'Lang 2',
-      },
-    ];
-    return Promise.resolve(exampleDirectors);
+  fetchLanguages(): Promise<AxiosResponse<EntityReference[]>> {
+    const requestUrl = `${this.baseUrl}/language/get_all`;
+    return axios.get(requestUrl);
   }
 }

@@ -11,7 +11,7 @@ const MovieInfo = (props: MovieMainInfoProps) => {
       style={{
         height: '90%',
         marginBottom: 20,
-        width: '71%',
+        width: '100%',
         flexWrap: 'wrap',
       }}
     >

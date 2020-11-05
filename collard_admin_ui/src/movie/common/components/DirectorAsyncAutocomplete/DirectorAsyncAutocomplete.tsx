@@ -22,7 +22,7 @@ export const DirectorAsyncAutocomplete = (
     movieApiService
       .searchDirectors(event.target.value)
       .then((resp) => {
-        setDirectors(resp);
+        setDirectors(resp.data);
       })
       .finally(() => setIsLoading(false));
   };
