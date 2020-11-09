@@ -12,6 +12,7 @@ export type MovieState = {
   data: CreateMovieRequest;
   isValid: boolean;
   validity: MovieErrors;
+  images:File[];
 };
 
 const emptyEntityRef: EntityReference = {
@@ -45,6 +46,7 @@ const init: MovieState = {
     Year: '',
   },
   isValid: false,
+  images:[]
 };
 
 const MovieContext = createContext<{
@@ -60,6 +62,7 @@ const MovieContext = createContext<{
   setDirector: (director: EntityReference) => void;
   setIsVald: (isValid: boolean) => void;
   setData: (data: MovieContract) => void;
+  setImages:(data:File[]) => void;
   setFieldErrorMessage: (
     fieldName: keyof CreateMovieRequest,
     errorMessage: string
@@ -97,6 +100,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
       fieldName: fieldName,
     });
   };
+
   const setImagesUrls = (urls: string[]) => {
     send({
       type: 'SET_IMAGES_URLS',
@@ -174,6 +178,13 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const setImages = (images:File[]) => {
+    send({
+      type:'SET_IMAGES',
+      images
+    })
+  }
+
   return (
     <MovieContext.Provider
       value={{
@@ -190,6 +201,7 @@ export const MovieProvider = ({ children }: { children: ReactNode }) => {
         setOriginalCountr,
         setOriginalLanguages,
         setYear,
+        setImages,
         state,
       }}
     >

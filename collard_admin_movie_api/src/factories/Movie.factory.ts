@@ -1,10 +1,10 @@
-import { CreateMovieRequest, Movie } from 'collard_admin_models'
+import { CreateMovieRequest } from 'collard_admin_models'
 import { ObjectId } from 'mongodb'
 
-export const createMovie = (request:CreateMovieRequest):Movie => {
+export const createMovie = (request:CreateMovieRequest):any => {
     return {
         ...request,
         _ts:Date.now(),
-        _id: new ObjectId().toHexString()
+        _id: new ObjectId()
     }
 }

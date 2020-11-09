@@ -4,12 +4,20 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ToastProvider } from './common/toast/context/ToastState';
+import { AuthContextProvider } from './auth/context/AuthContext';
+import config from 'react-global-configuration';
+
+config.set({
+  agUrl:'localhost:8000',
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <ToastProvider>
-      <App />
-    </ToastProvider>
+    <AuthContextProvider>
+      <ToastProvider>
+        <App />
+      </ToastProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

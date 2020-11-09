@@ -8,12 +8,6 @@ import { BreadcrumbsProps } from './Breadcrumbs.props';
 const BreadcrumbsContainer = (props: BreadcrumbsProps) => {
   let path = useLocation().pathname;
 
-  useEffect(() => {
-    console.log(props.names);
-  }, [props.names?.length]);
-
-  console.log(props.names);
-
   let splitedPath = path.split('/');
   splitedPath = splitedPath.map((item) => {
     return item.replace(

@@ -2,7 +2,7 @@ import TabPanel from '../../common/components/TabPanel';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import BreadcrumbsContainer from '../../common/components/Breadcrumbs/Breadcrumbs';
-import { Button } from '../../common/components/Button';
+import { Button, ButtonTypes } from '../../common/components/Button';
 import { HeaderSection } from '../../common/components/HeaderSection/HeaderSection';
 import { Stack } from '../../common/components/Stack';
 import { useToastContext } from '../../common/toast/context/ToastState';
@@ -13,6 +13,7 @@ import { MovieApiService } from '../MovieApiService';
 import MovieAddPhotos from '../photo/MoviePhotos';
 import { MovieEditTabs } from '../common/tabs/MovieTabs';
 import { CircularProgress } from '@material-ui/core';
+import { createUpdateMovieRequest } from '../helpers/CreateUpdateMovieRequest';
 
 const MovieEdit = (props: { movieId: string }) => {
   const movieApiService = new MovieApiService();
@@ -29,28 +30,49 @@ const MovieEdit = (props: { movieId: string }) => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const handleSaveMovie = () => {
+  const handleEditMovie = () => {
+    const request = createUpdateMovieRequest(
+      movieContext.state.data,
+      props.movieId
+    );
     movieApiService
-      .save(movieContext.state.data)
-      .catch((error) => {
-        toastContext.show('error', error);
-      })
+      .update(request)
       .then(() => {
         history.push(MovieRoutPaths.All);
+      })
+      .catch((error) => {
+        const message = error.Errors?.join('\n') ?? 'Error while updating data';
+        toastContext.show('error', message);
       });
+  };
+
+  const handleDelete = () => {
+    movieApiService.delete(props.movieId).then(() => {
+      toastContext.show('success', "Successfully deleted movie" );
+      history.push(MovieRoutPaths.All)
+    }).catch(() => {
+      toastContext.show('error', "Error while deleting movie");
+    })
   };
 
   const isFormValid = movieContext.state.isValid;
 
-  const ctaItems = (
+  const ctaItems = [
+    <Button
+    onClick={handleDelete}
+    data-automation-id={'delete-button'}
+    variant={ButtonTypes.Warning}
+  >
+    Delete
+  </Button>,
     <Button
       data-automation-id={'save-button'}
-      onClick={handleSaveMovie}
+      onClick={handleEditMovie}
       disabled={!isFormValid}
     >
       Save
-    </Button>
-  );
+    </Button>,
+  ];
   const [currentTab, setCurrentTab] = useState(0);
 
   const getCurrentTabSection = () => {

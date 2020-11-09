@@ -5,7 +5,7 @@ type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
   variant?: ButtonTypes;
 };
 
-enum ButtonTypes {
+export enum ButtonTypes {
   Primary,
   Default,
   Warning,
@@ -16,10 +16,12 @@ export const Button = (props: ButtonProps) => {
     switch (type) {
       case ButtonTypes.Primary:
         return 'm_button_primary';
+      case ButtonTypes.Warning:
+        return 'm_button_warning'
     }
   };
   const { variant, children, type, ...restProps } = props;
-  const className = `${getClassName(props.variant || ButtonTypes.Primary)} ${
+  const className = `m_button ${getClassName(props.variant || ButtonTypes.Primary)} ${
     props.disabled ? 'm_button_disabled' : ''
   }`;
   return (

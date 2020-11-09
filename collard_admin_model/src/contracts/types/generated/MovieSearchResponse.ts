@@ -32,34 +32,32 @@ export interface MovieContract {
   OriginalCountry?: {
     Id: string;
     Name: string;
-  };
+  } | null;
   OriginalLanguage?: {
     Id: string;
     Name: string;
-  };
+  } | null;
   ImdbLink: string;
   ImdbScore: number;
   Genres:
     | []
-    | ["Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"]
     | [
-        (
-          | "Animation"
-          | "Action"
-          | "Comedy"
-          | "Family"
-          | "Horror"
-          | "Thriller"
-          | "Crime"
-          | "Drama"
-          | "Romance"
-          | "Fantasy"
-        ),
-        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
+        | "Animation"
+        | "Adventure"
+        | "Action"
+        | "Comedy"
+        | "Family"
+        | "Horror"
+        | "Thriller"
+        | "Crime"
+        | "Drama"
+        | "Romance"
+        | "Fantasy"
       ]
     | [
         (
           | "Animation"
+          | "Adventure"
           | "Action"
           | "Comedy"
           | "Family"
@@ -72,6 +70,22 @@ export interface MovieContract {
         ),
         (
           | "Animation"
+          | "Adventure"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
+        )
+      ]
+    | [
+        (
+          | "Animation"
+          | "Adventure"
           | "Action"
           | "Comedy"
           | "Family"
@@ -82,7 +96,32 @@ export interface MovieContract {
           | "Romance"
           | "Fantasy"
         ),
-        "Animation" | "Action" | "Comedy" | "Family" | "Horror" | "Thriller" | "Crime" | "Drama" | "Romance" | "Fantasy"
+        (
+          | "Animation"
+          | "Adventure"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
+        ),
+        (
+          | "Animation"
+          | "Adventure"
+          | "Action"
+          | "Comedy"
+          | "Family"
+          | "Horror"
+          | "Thriller"
+          | "Crime"
+          | "Drama"
+          | "Romance"
+          | "Fantasy"
+        )
       ];
   /**
    * Leading actors

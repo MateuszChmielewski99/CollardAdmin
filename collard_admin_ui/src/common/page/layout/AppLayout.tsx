@@ -15,7 +15,7 @@ export const AppLayout = (props: AppLayoutProps) => {
     <StickyContainer>
       <Sticky>
         {({ style }) => (
-          <div style={{ ...style }}>
+          <div style={{ ...style, zIndex:999 }}>
             <AppHeader />
           </div>
         )}

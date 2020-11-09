@@ -53,8 +53,8 @@ export class MovieService implements IMovieService {
     movieToUpdate.ImdbLink = request.ImdbLink;
     movieToUpdate.ImdbScore = request.ImdbScore;
     movieToUpdate.LeadingActors = request.LeadingActors;
-    movieToUpdate.OriginalCountry = request.OriginalCountry?.pop();
-    movieToUpdate.OriginalLanguage = request.OriginalLanguage?.pop();
+    movieToUpdate.OriginalCountry = request.OriginalCountry;
+    movieToUpdate.OriginalLanguage = request.OriginalLanguage;
     movieToUpdate.Year = request.Year;
 
     await this.movieRepository.update(movieToUpdate);

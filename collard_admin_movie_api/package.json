@@ -57,7 +57,8 @@
   "dependencies": {
     "@types/express": "^4.17.8",
     "@types/mongodb": "^3.5.31",
-    "collard_admin_models": "^1.2.0",
+    "body-parser": "^1.19.0",
+    "collard_admin_models": "^1.2.4",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.2",
     "nodemon": "^2.0.6",

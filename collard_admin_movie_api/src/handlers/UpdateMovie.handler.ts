@@ -3,7 +3,7 @@ import {
   validateUpdateMovieRequest,
 } from 'collard_admin_models';
 import { inject, injectable } from 'tsyringe';
-import { createValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
+import { createAjvValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
 import { OperationRersult } from '../internal_types/OperationResult';
 import { IMovieService } from '../services/MovieService/IMovieService';
 
@@ -17,9 +17,10 @@ export class UpdateMovieHandler {
     const validationResul = validateUpdateMovieRequest(request);
 
     if (!validationResul) {
-      const errorResponse = createValidationErrorResponse(
+      const errorResponse = createAjvValidationErrorResponse(
         validateUpdateMovieRequest.errors
       );
+
       return { success: false, ...errorResponse };
     }
 

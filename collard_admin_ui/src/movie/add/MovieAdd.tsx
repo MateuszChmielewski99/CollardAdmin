@@ -23,11 +23,12 @@ const MovieAdd = () => {
   const handleSaveMovie = () => {
     movieApiService
       .save(movieContext.state.data)
-      .catch((error) => {
-        toastContext.show('error', error);
-      })
       .then(() => {
         history.push(MovieRoutPaths.All);
+      })
+      .catch((error) => {
+        const message =  error.Errors?.join('\n') ?? 'Error while creating movie';
+        toastContext.show('error', message);
       });
   };
 

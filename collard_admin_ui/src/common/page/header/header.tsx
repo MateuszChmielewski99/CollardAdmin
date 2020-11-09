@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Button,
   IconButton,
   makeStyles,
   Toolbar,
@@ -7,6 +8,8 @@ import {
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import React, { useState } from 'react';
+import { useAuthContext } from '../../../auth/context/AuthContext';
+import { Stack } from '../../components/Stack';
 import { AppMenu } from '../menu/menu';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,11 +22,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  logOutButton:{
+    color:'white',
+  }
 }));
 
 export const AppHeader = () => {
   const classes = useStyles();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const authContext = useAuthContext();
 
   return (
     <AppBar position="static" style={{ zIndex: 1000 }}>
@@ -42,6 +49,8 @@ export const AppHeader = () => {
         <Typography variant="h6" className={classes.title}>
           Collard Admin
         </Typography>
+        <Stack flex={1}></Stack>
+        <Button className={classes.logOutButton} onClick={authContext.signOut}>Sign out</Button>
       </Toolbar>
       <AppMenu
         isOpen={isMenuOpen}

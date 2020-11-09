@@ -15,15 +15,16 @@ export const HeaderSection = (props: HeaderSectionProps) => {
     <Stack horizontal className={'HeaderSection'}>
       {props.title}
       <Stack flex={1}></Stack>
-      {ctaItemsList.map((item) => (
-        <Stack
-          key={item.key}
-          alignSelf={'flex-end'}
-          className={'HeaderSectionCtaItems'}
-        >
-          {item}
-        </Stack>
-      ))}
+      <Stack horizontal>
+        {ctaItemsList.map((item, index) => (
+          <Stack
+            key={`cta-${index}`}
+            className={'HeaderSectionCtaItems'}
+          >
+            {item}
+          </Stack>
+        ))}
+      </Stack>
     </Stack>
   );
 };

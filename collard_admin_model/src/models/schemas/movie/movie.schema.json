@@ -25,10 +25,20 @@
       "description": "Year of production"
     },
     "OriginalCountry": {
+      "anyOf": [{
         "$ref": "../../../common/common-definitions.schema.json#/definitions/EntityReference"
+      }, {
+        "type": "null"
+      }]
     },
     "OriginalLanguage": {
-        "$ref": "../../../common/common-definitions.schema.json#/definitions/EntityReference"
+      "anyOf": [{
+          "$ref": "../../../common/common-definitions.schema.json#/definitions/EntityReference"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "ImdbLink": {
       "type": "string"
@@ -43,6 +53,7 @@
         "type": "string",
         "enum": [
           "Animation",
+          "Adventure",
           "Action",
           "Comedy",
           "Family",

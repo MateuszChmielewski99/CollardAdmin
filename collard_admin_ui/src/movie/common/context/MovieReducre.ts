@@ -54,6 +54,9 @@ const movieProducer = produce((draft: MovieState, event: MovieEvents) => {
     case 'SET_DATA':
       draft.data = getMovieData(event.data);
       break;
+    case 'SET_IMAGES':
+      draft.images = event.images;
+      break;
     default:
       throw new Error('Invalid event type');
   }

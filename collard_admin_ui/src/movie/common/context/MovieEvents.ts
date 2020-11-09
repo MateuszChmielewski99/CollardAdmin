@@ -73,6 +73,11 @@ interface SetData {
   data: MovieContract;
 }
 
+interface SetImages{
+  type:'SET_IMAGES',
+  images:File[]
+}
+
 export type MovieEvents =
   | SetNameEvent
   | SetDirector
@@ -86,4 +91,5 @@ export type MovieEvents =
   | SetIsValid
   | SetImagesUrls
   | SetFieldErrorMessage
-  | SetData;
+  | SetData
+  | SetImages;

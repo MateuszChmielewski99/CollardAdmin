@@ -9,7 +9,7 @@ import {
   validateCreateMovieRequest,
   validateUpdateMovieRequest,
 } from 'collard_admin_models';
-import { createValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
+import { createAjvValidationErrorResponse, createValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
 import { UpdateMovieHandler } from '../handlers/UpdateMovie.handler';
 
 const MovieRouter: Router = express.Router();
@@ -19,7 +19,7 @@ const getMovie = async (req: Request, res: Response) => {
 
   const id = req.query.id as string;
 
-  if (!id) res.status(400).send('Id must be provided');
+  if (!id) res.status(400).send(createValidationErrorResponse(['Id must be provided']));
 
   const result = await service.getById(id);
   
@@ -31,7 +31,9 @@ const deleteMovie = async (req: Request, res: Response) => {
 
   const id = req.query.id as string;
 
-  if (!id) res.status(400).send('Id must be provided');
+  if (!id) res.status(400).send(createValidationErrorResponse(['Id must be provided']));
+
+  console.log('http delete triggered');
 
   await service.delete(id);
 
@@ -59,7 +61,7 @@ const createMovie = async (req: Request, res: Response) => {
   const validationResul = validateCreateMovieRequest(request);
 
   if (!validationResul) {
-    const errorResponse = createValidationErrorResponse(
+    const errorResponse = createAjvValidationErrorResponse(
       validateUpdateMovieRequest.errors
     );
     res.status(400).send(errorResponse);

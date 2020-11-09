@@ -4,13 +4,18 @@ import {
   ListingRequest,
   MovieContract,
   MovieSearchResponse,
+  UpdateMovieRequest,
 } from 'collard_admin_models';
 import { MovieListingFilters } from './listing/filters/MovieListingFilters';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-
+import serviceDiscovery from '../config/ServiceDiscovery';
 export class MovieApiService {
-  private baseUrl: string = 'http://localhost:8000';
-
+  private baseUrl:string = ''
+  private protocol = 'http' 
+  constructor(){
+    const baseUrl = serviceDiscovery.getServiceUrl().ApiGatewayUrl;
+    this.baseUrl = `${this.protocol}://${baseUrl}`;
+  }
   save(movie: CreateMovieRequest): Promise<void> {
     const requestUrl = `${this.baseUrl}/movie/create`;
     return axios.post(requestUrl, movie);
@@ -40,6 +45,16 @@ export class MovieApiService {
       },
     };
     return axios.get(requestUrl, config);
+  }
+
+  update(request:UpdateMovieRequest):Promise<AxiosResponse<void>>{
+    const requestUrl = `${this.baseUrl}/movie/update`;
+    return axios.put(requestUrl, request) as Promise<AxiosResponse<void>>;
+  }
+
+  delete(id:string){
+    const requestUrl = `${this.baseUrl}/movie/delete?id=${id}`;
+    return axios.delete(requestUrl)
   }
 
   searchDirectors(query: string): Promise<AxiosResponse<EntityReference[]>> {

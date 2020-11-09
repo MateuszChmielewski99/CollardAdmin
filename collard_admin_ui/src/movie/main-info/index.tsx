@@ -27,7 +27,7 @@ import { MovieMainInfoProps } from './MovieInfoProps';
 import './movie-add-info.css';
 
 export const MovieMainInfo = (props: MovieMainInfoProps) => {
-  const allGenres = Object.values(Genres);
+  const allGenres = [...Object.values(Genres),'Adventure'];
   const years = getYearOptions();
   const movieContext = useMovieContext();
   const [title, setTitle] = useState(movieContext.state.data.Name);
@@ -92,6 +92,8 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
 
     const validationResult = validateCreateMovieRequest(updated);
     movieContext.setIsVald(validationResult as boolean);
+
+    console.log(validateCreateMovieRequest.errors)
 
     const nameErrors = validateCreateMovieRequest.errors
       ?.map((s) => createErrorMessage(s))
