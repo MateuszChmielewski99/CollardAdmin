@@ -14,7 +14,7 @@
     "seedMovie": "ts-node src/seed/movie/movie_seed.ts",
     "start": "ts-node dist/index.js",
     "build": "tsdx build",
-    "test": "ts-mocha ./test/**/* -p ./tsconfig.spec.json -r esm --exit --timeout 5000",
+    "test": "ts-mocha ./test/**/* -p ./tsconfig.spec.json -r esm --exit --timeout 50000",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
