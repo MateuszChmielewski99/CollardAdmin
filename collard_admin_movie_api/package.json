@@ -19,12 +19,13 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "local": "nodemon src/index.ts"
+    "local": "nodemon src/index.ts",
+    "prettier-format": "prettier --write src/**/* && prettier --write test/**/*"
   },
   "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "yarn prettier-format"
     }
   },
   "prettier": {

@@ -19,7 +19,7 @@ export class MovieRepository extends BaseRepository<Movie>
       {
         $facet: {
           Result: [
-            { $skip: pageSize * (pageNumber - 1)   },
+            { $skip: pageSize * (pageNumber - 1) },
             { $limit: pageSize },
           ],
           Count: [

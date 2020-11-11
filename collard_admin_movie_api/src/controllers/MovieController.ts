@@ -9,15 +9,18 @@ import {
   validateCreateMovieRequest,
   validateUpdateMovieRequest,
 } from 'collard_admin_models';
-import { createAjvValidationErrorResponse, createValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
+import {
+  createAjvValidationErrorResponse,
+  createValidationErrorResponse,
+} from '../factories/ValidationErrorResponse.factory';
 import { UpdateMovieHandler } from '../handlers/UpdateMovie.handler';
 import { IImageDao } from '../dao/IImageDao';
 import { GcImageDao } from '../dao/GcImageDao';
 import multer from 'multer';
 
 const upload = multer({
-  dest:'/files'
-})
+  dest: '/files',
+});
 
 const MovieRouter: Router = express.Router();
 
@@ -26,10 +29,13 @@ const getMovie = async (req: Request, res: Response) => {
 
   const id = req.query.id as string;
 
-  if (!id) res.status(400).send(createValidationErrorResponse(['Id must be provided']));
+  if (!id)
+    res
+      .status(400)
+      .send(createValidationErrorResponse(['Id must be provided']));
 
   const result = await service.getById(id);
-  
+
   res.json(result);
 };
 
@@ -38,7 +44,10 @@ const deleteMovie = async (req: Request, res: Response) => {
 
   const id = req.query.id as string;
 
-  if (!id) res.status(400).send(createValidationErrorResponse(['Id must be provided']));
+  if (!id)
+    res
+      .status(400)
+      .send(createValidationErrorResponse(['Id must be provided']));
 
   console.log('http delete triggered');
 
@@ -52,7 +61,7 @@ const updateMovie = async (req: Request, res: Response) => {
   const request: UpdateMovieRequest = req.body;
 
   const result = await handler.handleMovieUpdate(request);
-  
+
   if (!result.success) {
     res.status(400).send(result.Errors);
   }
@@ -82,24 +91,25 @@ const createMovie = async (req: Request, res: Response) => {
 const getPagedResult = async (req: Request, res: Response) => {
   const service: IMovieService = container.resolve(MovieService);
 
-  const result = await service.getPaged(req.query as unknown as ListingRequest);
+  const result = await service.getPaged(
+    (req.query as unknown) as ListingRequest
+  );
 
   res.json(result);
-}
-
+};
 
 const uploadImage = async (req: Request, res: Response) => {
-  const dao:IImageDao = container.resolve(GcImageDao);
-  console.log(req.files,'files');
+  const dao: IImageDao = container.resolve(GcImageDao);
+  console.log(req.files, 'files');
   dao.upload();
   res.send();
-}
+};
 
 MovieRouter.get('/', getMovie);
 MovieRouter.delete('/delete', deleteMovie);
 MovieRouter.put('/update', updateMovie);
 MovieRouter.post('/create', createMovie);
-MovieRouter.get('/page',getPagedResult);
-MovieRouter.post('/upload',upload.array('files', 12) ,uploadImage);
+MovieRouter.get('/page', getPagedResult);
+MovieRouter.post('/upload', upload.array('files', 12), uploadImage);
 
 export default MovieRouter;

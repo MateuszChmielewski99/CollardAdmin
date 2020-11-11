@@ -1,3 +1,3 @@
 export interface IImageDao {
-    upload():string[];
+  upload(): string[];
 }

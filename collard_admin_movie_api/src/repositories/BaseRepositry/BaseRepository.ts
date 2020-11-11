@@ -41,7 +41,7 @@ export class BaseRepository<T extends { _id?: string }> {
       await this.client.connect();
 
       const db = this.client.db();
-      const {_id, ...rest} = entity;
+      const { _id, ...rest } = entity;
       await db
         .collection(this.collectionName)
         .updateOne({ _id }, { $set: rest }, { upsert: true });
@@ -61,7 +61,7 @@ export class BaseRepository<T extends { _id?: string }> {
     } catch (e) {
       console.error(e);
     }
-    
+
     return result;
   }
 
@@ -69,7 +69,7 @@ export class BaseRepository<T extends { _id?: string }> {
     try {
       await this.client.connect();
       const db = this.client.db();
-      await db.collection(this.collectionName).deleteOne({ _id:id });
+      await db.collection(this.collectionName).deleteOne({ _id: id });
     } catch (e) {
       console.error(e);
     }

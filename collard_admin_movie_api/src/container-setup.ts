@@ -7,6 +7,6 @@ export const bootstrap = () => {
     useClass: MovieRepository,
   });
   container.register('IMovieService', {
-    useClass:MovieService
-  })
+    useClass: MovieService,
+  });
 };

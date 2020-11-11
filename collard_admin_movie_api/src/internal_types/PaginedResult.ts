@@ -1,4 +1,4 @@
 export type PaginedResult<T> = {
-    Result:T[],
-    Count:{count:number}[]
-}
+  Result: T[];
+  Count: { count: number }[];
+};

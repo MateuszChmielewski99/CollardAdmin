@@ -27,8 +27,8 @@ export class MovieService implements IMovieService {
   public async getById(id: string) {
     const movieId: ObjectId = new ObjectId(id);
     const result = await this.movieRepository.getOne(movieId);
-    
-    if(!result) return undefined;
+
+    if (!result) return undefined;
 
     const movieContract = createMovieContract(result);
 
@@ -61,18 +61,23 @@ export class MovieService implements IMovieService {
   }
 
   public async getPaged(request: ListingRequest) {
-    const rawResult = (await this.movieRepository.getPagedResult(
-      Number.parseInt(request.PageNumber),
-      Number.parseInt(request.PageSize),
-    ))?.pop();
-    
-    const result:MovieSearchResponse = {
-      Count: rawResult?.Count?.pop()?.count || 0,
-      Movies:[]
-    }
+    const rawResult = (
+      await this.movieRepository.getPagedResult(
+        Number.parseInt(request.PageNumber),
+        Number.parseInt(request.PageSize)
+      )
+    )?.pop();
 
-    result.Movies = rawResult?.Result.map<MovieContract>(value => createMovieContract(value)) || [];
-    
+    const result: MovieSearchResponse = {
+      Count: rawResult?.Count?.pop()?.count || 0,
+      Movies: [],
+    };
+
+    result.Movies =
+      rawResult?.Result.map<MovieContract>(value =>
+        createMovieContract(value)
+      ) || [];
+
     return result;
   }
 }
