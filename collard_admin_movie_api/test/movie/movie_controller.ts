@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('/POST movie', () => {
   it("it shouldn't create movie with invalid name", (done: jest.DoneCallback) => {
     const request = new CreateMovieReqestDataMock()
-      .withName(2)
+      .withName(1)
       .withScore()
       .withYear()
       .withGenres([Genres.Action, Genres.Animation, Genres.Horror])
@@ -23,11 +23,13 @@ describe('/POST movie', () => {
       .request(server)
       .post('/movie/create')
       .send(request)
-      .then(resp => {
+      .end((err, resp) => {
+        if(err) done(err);
+
         expect(resp).to.have.status(400);
-        expect(resp).to.be('object');
+        expect(resp).to.be.an('object');
+        done();
       })
-      .finally(() => done());
   });
 
   it('it should fail with missing genres', (done: jest.DoneCallback) => {
@@ -43,10 +45,12 @@ describe('/POST movie', () => {
       .request(server)
       .post('/movie/create')
       .send(request)
-      .then(resp => {
+      .end((err,resp) => {
+        if(err) done(err);
+
         expect(resp).to.have.status(400);
-        expect(resp).to.be('object');
+        expect(resp).to.be.an('object');
+        done();
       })
-      .finally(() => done());
   });
 });

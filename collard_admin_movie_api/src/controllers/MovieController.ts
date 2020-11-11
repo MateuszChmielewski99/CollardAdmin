@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import express, { Router, Response, Request } from 'express';
+import express, { Router, Response, Request, NextFunction } from 'express';
 import { IMovieService } from '../services/MovieService/IMovieService';
 import { MovieService } from '../services/MovieService/MovieService';
 import {
@@ -30,7 +30,7 @@ const getMovie = async (req: Request, res: Response) => {
   const id = req.query.id as string;
 
   if (!id)
-    res
+    return res
       .status(400)
       .send(createValidationErrorResponse(['Id must be provided']));
 
@@ -45,7 +45,7 @@ const deleteMovie = async (req: Request, res: Response) => {
   const id = req.query.id as string;
 
   if (!id)
-    res
+    return res
       .status(400)
       .send(createValidationErrorResponse(['Id must be provided']));
 
@@ -63,7 +63,7 @@ const updateMovie = async (req: Request, res: Response) => {
   const result = await handler.handleMovieUpdate(request);
 
   if (!result.success) {
-    res.status(400).send(result.Errors);
+    return res.status(400).send(result.Errors);
   }
 
   res.send();
@@ -80,7 +80,7 @@ const createMovie = async (req: Request, res: Response) => {
     const errorResponse = createAjvValidationErrorResponse(
       validateUpdateMovieRequest.errors
     );
-    res.status(400).send(errorResponse);
+    return res.status(400).send(errorResponse);
   }
 
   await service.save(request);

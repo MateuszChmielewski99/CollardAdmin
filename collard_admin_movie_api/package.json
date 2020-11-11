@@ -71,6 +71,7 @@
     "collard_admin_models": "^1.2.4",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
+    "express": "^4.17.1",
     "faker": "^5.1.0",
     "mocha": "^8.2.1",
     "mongodb": "^3.6.2",
