@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,8 +26,11 @@ jobs:
       
       - name: Yarn CLI  
         uses: CultureHQ/actions-yarn@v1.0.1
-             
-      - name: install dependencies
+      
+      - name: mk dir
+        run: sudo mkdir /files 
+      
+      - name: install dependencies & build
         working-directory: ./collard_admin_movie_api
         run: yarn install
   
