@@ -11,6 +11,13 @@ import {
 } from 'collard_admin_models';
 import { createAjvValidationErrorResponse, createValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
 import { UpdateMovieHandler } from '../handlers/UpdateMovie.handler';
+import { IImageDao } from '../dao/IImageDao';
+import { GcImageDao } from '../dao/GcImageDao';
+import multer from 'multer';
+
+const upload = multer({
+  dest:'/files'
+})
 
 const MovieRouter: Router = express.Router();
 
@@ -69,7 +76,7 @@ const createMovie = async (req: Request, res: Response) => {
 
   await service.save(request);
 
-  res.send();
+  res.status(201).send();
 };
 
 const getPagedResult = async (req: Request, res: Response) => {
@@ -80,10 +87,19 @@ const getPagedResult = async (req: Request, res: Response) => {
   res.json(result);
 }
 
+
+const uploadImage = async (req: Request, res: Response) => {
+  const dao:IImageDao = container.resolve(GcImageDao);
+  console.log(req.files,'files');
+  dao.upload();
+  res.send();
+}
+
 MovieRouter.get('/', getMovie);
 MovieRouter.delete('/delete', deleteMovie);
 MovieRouter.put('/update', updateMovie);
 MovieRouter.post('/create', createMovie);
 MovieRouter.get('/page',getPagedResult);
+MovieRouter.post('/upload',upload.array('files', 12) ,uploadImage);
 
 export default MovieRouter;
