@@ -19,15 +19,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: onichandame/node-test-action@0.0.0
-
-      # Runs a single command using the runners shell
+      - uses: actions/checkout@v2
+      
       - name: install dependencies
         working-directory: ./collard_admin_movie_api
-        run: yarn install
-
+        run: npm install
+  
       # Runs a set of commands using the runners shell
       - name: Run tests
         working-directory: ./collard_admin_movie_api
-        run: yarn test
+        run: npm test
