@@ -9,6 +9,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+defaults:
+  run:
+    working-directory: ./collard_admin_movie_api
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,11 +24,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: install dependencies
+      - name: Yarn CLI  
+        uses: CultureHQ/actions-yarn@v1.0.1
+      
+      - name: mk dir
+        run: sudo mkdir /files 
+      
+      - name: install dependencies & build
         working-directory: ./collard_admin_movie_api
-        run: npm install
+        run: yarn install
   
       # Runs a set of commands using the runners shell
       - name: Run tests
         working-directory: ./collard_admin_movie_api
-        run: npm test
+        run: yarn test
