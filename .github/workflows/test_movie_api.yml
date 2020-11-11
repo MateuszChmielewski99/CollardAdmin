@@ -21,12 +21,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: onichandame/node-test-action@0.0.0
-      - working-directory: ./collard_admin_movie_api
 
       # Runs a single command using the runners shell
       - name: install dependencies
-      - run: yarn install
+        working-directory: ./collard_admin_movie_api
+        run: yarn install
 
       # Runs a set of commands using the runners shell
       - name: Run tests
-      - run: yarn test
+        working-directory: ./collard_admin_movie_api
+        run: yarn test
