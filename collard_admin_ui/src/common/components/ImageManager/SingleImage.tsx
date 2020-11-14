@@ -1,7 +1,7 @@
 import React from 'react';
 
 type ImageItemProps = {
-  image: File;
+  src: string;
 };
 
 const style: React.CSSProperties = {
@@ -12,7 +12,7 @@ const style: React.CSSProperties = {
 };
 
 export const ImageItem = (props: ImageItemProps) => {
-  return <img style={{ ...style }} src={URL.createObjectURL(props.image)}></img>
+  return <img style={{ ...style }} src={props.src}></img>
 };
 
 

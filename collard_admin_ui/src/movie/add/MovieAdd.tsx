@@ -21,14 +21,39 @@ const MovieAdd = () => {
   const history = useHistory();
 
   const handleSaveMovie = () => {
+    if (movieContext.state.images.length) uploadPosters(saveMovie);
+    else saveMovie();
+  };
+
+  const saveMovie = (urls?: string[]) => {
+    const request = movieContext.state.data;
+
+    if(urls) urls.forEach(u => request.ImagesUrls?.push(u));
+    
     movieApiService
-      .save(movieContext.state.data)
+      .save(request)
       .then(() => {
         history.push(MovieRoutPaths.All);
       })
       .catch((error) => {
-        const message =  error.Errors?.join('\n') ?? 'Error while creating movie';
+        const message = error.Errors?.join('\n') ?? 'Error while updating data';
         toastContext.show('error', message);
+      });
+  };
+
+
+  const uploadPosters = (callback: (urls: string[]) => void) => {
+    movieApiService
+      .uploadPosters(movieContext.state.images)
+      .then((res) => {
+        toastContext.show('success', 'uploaded');
+        callback(res.data)
+      })
+      .catch((err) => {
+        toastContext.show(
+          'error',
+          'Error while uploading files'
+        );
       });
   };
 

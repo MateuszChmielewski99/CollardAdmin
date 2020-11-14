@@ -31,10 +31,18 @@ const MovieEdit = (props: { movieId: string }) => {
   }, []);
 
   const handleEditMovie = () => {
+    if (movieContext.state.images.length) uploadPosters(saveMovie);
+    else saveMovie();
+  };
+
+  const saveMovie = (urls?: string[]) => {
     const request = createUpdateMovieRequest(
       movieContext.state.data,
       props.movieId
     );
+
+    if (urls) urls.forEach(e => request.ImagesUrls?.push(e));
+
     movieApiService
       .update(request)
       .then(() => {
@@ -46,25 +54,43 @@ const MovieEdit = (props: { movieId: string }) => {
       });
   };
 
+  const uploadPosters = (callback: (urls: string[]) => void) => {
+    movieApiService
+      .uploadPosters(movieContext.state.images)
+      .then((res) => {
+        toastContext.show('success', 'uploaded');
+        callback(res.data)
+      })
+      .catch((err) => {
+        toastContext.show(
+          'error',
+          'Error while uploading files'
+        );
+      });
+  };
+
   const handleDelete = () => {
-    movieApiService.delete(props.movieId).then(() => {
-      toastContext.show('success', "Successfully deleted movie" );
-      history.push(MovieRoutPaths.All)
-    }).catch(() => {
-      toastContext.show('error', "Error while deleting movie");
-    })
+    movieApiService
+      .delete(props.movieId)
+      .then(() => {
+        toastContext.show('success', 'Successfully deleted movie');
+        history.push(MovieRoutPaths.All);
+      })
+      .catch(() => {
+        toastContext.show('error', 'Error while deleting movie');
+      });
   };
 
   const isFormValid = movieContext.state.isValid;
 
   const ctaItems = [
     <Button
-    onClick={handleDelete}
-    data-automation-id={'delete-button'}
-    variant={ButtonTypes.Warning}
-  >
-    Delete
-  </Button>,
+      onClick={handleDelete}
+      data-automation-id={'delete-button'}
+      variant={ButtonTypes.Warning}
+    >
+      Delete
+    </Button>,
     <Button
       data-automation-id={'save-button'}
       onClick={handleEditMovie}

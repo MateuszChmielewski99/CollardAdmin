@@ -29,7 +29,7 @@ const init: MovieState = {
     LeadingActors: [],
     Name: '',
     Year: 0,
-    ImagesUrls: undefined,
+    ImagesUrls: [],
     OriginalCountry: undefined,
     OriginalLanguage: undefined,
   },

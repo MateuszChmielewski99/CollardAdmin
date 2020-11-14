@@ -93,8 +93,6 @@ export const MovieMainInfo = (props: MovieMainInfoProps) => {
     const validationResult = validateCreateMovieRequest(updated);
     movieContext.setIsVald(validationResult as boolean);
 
-    console.log(validateCreateMovieRequest.errors)
-
     const nameErrors = validateCreateMovieRequest.errors
       ?.map((s) => createErrorMessage(s))
       .filter((s) => s?.property === fieldName);

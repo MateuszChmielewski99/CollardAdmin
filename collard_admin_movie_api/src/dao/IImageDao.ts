@@ -1,3 +1,4 @@
 export interface IImageDao {
-  upload(): string[];
+  upload(name:Express.Multer.File[]): string[];
+  delete(url:string[]):Promise<void>;
 }

@@ -24,12 +24,12 @@ describe('/POST movie', () => {
       .post('/movie/create')
       .send(request)
       .end((err, resp) => {
-        if(err) done(err);
+        if (err) done(err);
 
         expect(resp).to.have.status(400);
         expect(resp).to.be.an('object');
         done();
-      })
+      });
   });
 
   it('it should fail with missing genres', (done: jest.DoneCallback) => {
@@ -45,12 +45,12 @@ describe('/POST movie', () => {
       .request(server)
       .post('/movie/create')
       .send(request)
-      .end((err,resp) => {
-        if(err) done(err);
+      .end((err, resp) => {
+        if (err) done(err);
 
         expect(resp).to.have.status(400);
         expect(resp).to.be.an('object');
         done();
-      })
+      });
   });
 });

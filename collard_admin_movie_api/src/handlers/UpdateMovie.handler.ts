@@ -2,7 +2,9 @@ import {
   UpdateMovieRequest,
   validateUpdateMovieRequest,
 } from 'collard_admin_models';
-import { inject, injectable } from 'tsyringe';
+import { GcImageDao } from '../dao/GcImageDao';
+import { IImageDao } from '../dao/IImageDao';
+import { container, inject, injectable } from 'tsyringe';
 import { createAjvValidationErrorResponse } from '../factories/ValidationErrorResponse.factory';
 import { OperationRersult } from '../internal_types/OperationResult';
 import { IMovieService } from '../services/MovieService/IMovieService';
@@ -15,6 +17,15 @@ export class UpdateMovieHandler {
     request: UpdateMovieRequest
   ): Promise<OperationRersult> {
     const validationResul = validateUpdateMovieRequest(request);
+    const imageDao: IImageDao = container.resolve(GcImageDao);
+
+    const movie = await this.service.getById(request.id);
+
+    const filesToDelete = movie?.ImagesUrls?.filter(
+      s => !request.ImagesUrls?.includes(s)
+    );
+
+    if (filesToDelete) await imageDao.delete(filesToDelete);
 
     if (!validationResul) {
       const errorResponse = createAjvValidationErrorResponse(

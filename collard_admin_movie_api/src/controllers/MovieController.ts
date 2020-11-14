@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import express, { Router, Response, Request, NextFunction } from 'express';
+import express, { Router, Response, Request } from 'express';
 import { IMovieService } from '../services/MovieService/IMovieService';
 import { MovieService } from '../services/MovieService/MovieService';
 import {
@@ -19,7 +19,10 @@ import { GcImageDao } from '../dao/GcImageDao';
 import multer from 'multer';
 
 const upload = multer({
-  dest: '/files',
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
 });
 
 const MovieRouter: Router = express.Router();
@@ -100,9 +103,13 @@ const getPagedResult = async (req: Request, res: Response) => {
 
 const uploadImage = async (req: Request, res: Response) => {
   const dao: IImageDao = container.resolve(GcImageDao);
-  console.log(req.files, 'files');
-  dao.upload();
-  res.send();
+  const casted = req.files as Express.Multer.File[];
+  try {
+    const response = await dao.upload(casted);
+    res.send(response);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 };
 
 MovieRouter.get('/', getMovie);

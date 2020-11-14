@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode } from 'react';
 import { AppHeader } from '../header/header';
 import { StickyContainer, Sticky } from 'react-sticky';
 import './layout.css';

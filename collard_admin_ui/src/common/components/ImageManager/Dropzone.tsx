@@ -9,7 +9,7 @@ type FileDropzoneProps = {
 export const FileDropzone = (props: FileDropzoneProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     props.onFilesDrop(acceptedFiles);
-  }, []);
+  }, [props]);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: props.accept,

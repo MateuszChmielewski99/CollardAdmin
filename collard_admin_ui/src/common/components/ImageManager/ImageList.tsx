@@ -5,8 +5,8 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { useTheme } from '@material-ui/core';
 
 type ImageListProps = {
-  images: File[];
-  onImageDelete: (index: number) => void;
+  images: string[];
+  onImageDelete: (item: string, index:number) => void;
 };
 
 export const ImageList = (props: ImageListProps) => {
@@ -14,16 +14,16 @@ export const ImageList = (props: ImageListProps) => {
   return (
     <Stack horizontal flexWrap={'wrap'}>
       {props.images.map((item, index) => (
-        <Stack>
+        <Stack key={`${item}${index}`}>
           <ClearIcon
-            onClick={() => props.onImageDelete(index)}
+            onClick={() => props.onImageDelete(item,index)}
             style={{
               color: theme.palette.primary.main,
               cursor: 'pointer',
               alignSelf: 'flex-end',
             }}
           />
-          <ImageItem image={item} key={`${item.name}${index}`} />
+          <ImageItem src={item} />
         </Stack>
       ))}
     </Stack>
