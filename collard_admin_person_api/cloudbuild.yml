@@ -17,6 +17,6 @@ steps:
         "--platform",
         "managed",
         "--region",
-        "europe-west3-a"
+        "europe-west3-a",
         "--allow-unauthenticated",
       ]
