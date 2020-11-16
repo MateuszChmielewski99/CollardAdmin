@@ -16,5 +16,7 @@ steps:
         "gcr.io/$PROJECT_ID/${_SERVICE_NAME}:${SHORT_SHA}",
         "--platform",
         "managed",
+        "--region",
+        "europe-west3-a"
         "--allow-unauthenticated",
       ]
