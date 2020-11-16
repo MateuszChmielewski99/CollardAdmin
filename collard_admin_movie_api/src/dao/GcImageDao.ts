@@ -19,7 +19,7 @@ export class GcImageDao implements IImageDao {
     for (const file of files) {
       const blob = this.bucket.file(Date.now() + file.originalname);
       const blobStream = blob.createWriteStream({
-        metadata:{ contentType: file.mimetype }
+        metadata: { contentType: file.mimetype },
       });
       blobStream.on('finish', () => {
         blob.makePublic();
@@ -35,21 +35,24 @@ export class GcImageDao implements IImageDao {
     return urls;
   }
 
-  async delete(urls:string[]){
+  async delete(urls: string[]) {
     for (const url of urls) {
       const fileName = this.getFileName(url);
       console.log(fileName);
-      try{
-      await this.bucket.file(fileName).delete();
-      }catch(e)
-      {console.log(e.errors)}
+      try {
+        await this.bucket.file(fileName).delete();
+      } catch (e) {
+        console.log(e.errors);
+      }
     }
   }
 
-  
-  private getFileName = (url:string) => {
-    return url.replace(`https://storage.googleapis.com/${this.bucket.name}/`,'');
-  }
+  private getFileName = (url: string) => {
+    return url.replace(
+      `https://storage.googleapis.com/${this.bucket.name}/`,
+      ''
+    );
+  };
 
   private getFileUrl = (fileName: string, bucketName: string) => {
     return `https://storage.googleapis.com/${bucketName}/${fileName}`;

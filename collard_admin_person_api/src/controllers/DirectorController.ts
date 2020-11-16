@@ -11,7 +11,7 @@ const searchDistributor = async (req: Request, res: Response) => {
   const queryString = req.query.query as string;
 
   if (!queryString) {
-    res.status(400).send('Query cannot be empty');
+    return res.status(400).send('Query cannot be empty');
   }
   
   const result = await service.search(queryString);
